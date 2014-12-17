@@ -2,5 +2,7 @@
     {{pessoa.nome}}
     {{pessoa.tel}}
     {{pessoa.e_mail}}
-    {{pessoa.foto}}
+    {% if pessoa.foto %}
+     <img src='../{{pessoa.foto.url}}'/>
+    {% endif %}
 {%endfor%}
