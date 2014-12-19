@@ -1,8 +1,0 @@
-{%for pessoa in time_mvb%}
-    {{pessoa.nome}}
-    {{pessoa.tel}}
-    {{pessoa.e_mail}}
-    {% if pessoa.foto %}
-     <img src='../{{pessoa.foto.url}}'/>
-    {% endif %}
-{%endfor%}

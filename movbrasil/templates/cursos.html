@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    <title> MovBrasil - Quem somos </title>
+    <title> MovBrasil - Cursos </title>
 {% endblock %}
 
 {% block topbar %}
 <!-- Quem somos -->
-<li class="dropdown active">
+<li>
     <a href="{% url 'quem_somos' %}">
         Quem somos
     </a>
@@ -14,7 +14,7 @@
 <!-- End Home -->
 
 <!-- Cursos -->
-<li>
+<li class="dropdown active">
     <a href="{% url 'cursos' %}" >
         Cursos
     </a>
@@ -37,3 +37,5 @@
 </li>
 <!-- Ens Contato -->
 {% endblock %}
+
+{% block content%} {% endblock %}

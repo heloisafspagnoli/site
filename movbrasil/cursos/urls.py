@@ -1,6 +1,8 @@
-try:
-    from django.conf.urls import *
-except ImportError:  # django < 1.4
-    from django.conf.urls.defaults import *
+from django.conf import settings
+from django.conf.urls import patterns, include, url
+from django.contrib import admin
+from django.views.generic import TemplateView
 
-# place app url patterns here
+urlpatterns = patterns('',
+    url(r'^cursos/', TemplateView.as_view(template_name="cursos.html"), name="cursos")
+)
