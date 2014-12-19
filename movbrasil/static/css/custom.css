@@ -1,1 +1,7 @@
 /* Add here all your css styles (customizations) */
+
+/*Remove a setinha do dropdown*/
+.header .dropdown > a:after, 
+.header .dropdown-submenu > a:after {
+    content: none;
+}
