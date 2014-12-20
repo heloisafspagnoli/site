@@ -18,3 +18,7 @@
     text-align: center;
     position: relative; 
 }
+
+h1, h2, h3, h4, h5, h6, p, small, a, span, body {
+    font-family: 'FontAwesome', "Open Sans", sans-serif;
+}

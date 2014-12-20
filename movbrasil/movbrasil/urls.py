@@ -10,6 +10,7 @@ urlpatterns = patterns('',
 
     url(r'^$', TemplateView.as_view(template_name="home.html"), name="home"),
     url(r'^contato/', TemplateView.as_view(template_name="contato.html"), name="contato"),
+    url(r'^erro/', TemplateView.as_view(template_name="404.html"), name="erro_404"),
     url(r'', include('dados_basicos.urls')),
     url(r'', include('cursos.urls')),
     url(r'^admin/', include(admin.site.urls)),
