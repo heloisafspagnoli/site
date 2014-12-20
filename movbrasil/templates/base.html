@@ -14,7 +14,7 @@
     <meta name="author" content="">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}"/>
 
     <!-- CSS Global Compulsory -->
     <link rel="stylesheet" href="{% static 'plugins/bootstrap/css/bootstrap.min.css' %}">
@@ -105,33 +105,6 @@
     <!--=== End Footer Version 1 ===-->
 </div><!--/wrapper-->
 
-{% block js %}
-<!-- JS Global Compulsory -->
-<script type="text/javascript" src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'plugins/jquery/jquery-migrate.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'plugins/bootstrap/js/bootstrap.min.js' %}"></script>
-<!-- JS Implementing Plugins -->
-<script type="text/javascript" src="{% static 'plugins/back-to-top.js' %}"></script>
-<script type="text/javascript" src="{% static 'plugins/flexslider/jquery.flexslider-min.js' %}"></script>
-<script type="text/javascript" src="{% static 'plugins/parallax-slider/js/modernizr.js' %}"></script>
-<script type="text/javascript" src="{% static 'plugins/parallax-slider/js/jquery.cslider.js' %}"></script>
-<!-- JS Customization -->
-<script type="text/javascript" src="{% static 'js/custom.js' %}"></script>
-<!-- JS Page Level -->
-<script type="text/javascript" src="{% static 'js/app.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/plugins/parallax-slider.js' %}"></script>
-<script type="text/javascript">
-    jQuery(document).ready(function() {
-        App.init();
-        App.initSliders();
-        ParallaxSlider.initParallaxSlider();
-    });
-</script>
-<!--[if lt IE 9]>
-    <script src="{% static 'plugins/respond.js' %}"></script>
-    <script src="{% static 'plugins/html5shiv.js' %}"></script>
-    <script src="{% static 'js/plugins/placeholder-IE-fixes.js' %}"></script>
-<![endif]-->
-{% endblock %}
+{% block js %} {% endblock %}
 </body>
 </html>
