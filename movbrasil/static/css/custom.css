@@ -5,3 +5,16 @@
 .header .dropdown-submenu > a:after {
     content: none;
 }
+
+.qms_fa li {
+    margin-bottom: 6px;
+}
+
+.qms_fa li i {
+    color: #72c02c;
+    font-size: 13px;
+    min-width: 15px;
+    margin-right: 8px;
+    text-align: center;
+    position: relative; 
+}
