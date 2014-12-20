@@ -25,6 +25,8 @@
     <link rel="stylesheet" href="{% static 'plugins/font-awesome/css/font-awesome.min.css' %}">
     <link rel="stylesheet" href="{% static 'plugins/flexslider/flexslider.css' %}">
     <link rel="stylesheet" href="{% static 'plugins/parallax-slider/css/parallax-slider.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/revolution-slider/rs-plugin/css/settings.css' %}" type="text/css" media="screen">
+    <!--[if lt IE 9]><link rel="stylesheet" href="assets/plugins/revolution-slider/rs-plugin/css/settings-ie8.css' %}" type="text/css" media="screen"><![endif]-->
 
     <!-- CSS Theme -->
     <link rel="stylesheet" href="{% static 'css/theme-colors/default.css' %}">
@@ -66,10 +68,8 @@
         <!-- End Navbar -->
     </div>
     <!--=== End Header ===-->
-        <div class="container">
             {% block content %}
             {% endblock %}
-        </div>
 
     <!--=== Footer Version 1 ===-->
     <div class="footer-v1">
@@ -105,6 +105,7 @@
     <!--=== End Footer Version 1 ===-->
 </div><!--/wrapper-->
 
+{% block js %}
 <!-- JS Global Compulsory -->
 <script type="text/javascript" src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'plugins/jquery/jquery-migrate.min.js' %}"></script>
@@ -131,6 +132,6 @@
     <script src="{% static 'plugins/html5shiv.js' %}"></script>
     <script src="{% static 'js/plugins/placeholder-IE-fixes.js' %}"></script>
 <![endif]-->
-
+{% endblock %}
 </body>
 </html>
