@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    <title> MovBrasil - Cursos </title>
+{% endblock %}
+
+{% block topbar %}
+<!-- Quem somos -->
+<li>
+    <a href="{% url 'quem_somos' %}">
+        Quem somos
+    </a>
+</li>
+<!-- End Home -->
+
+<!-- Cursos -->
+<li class="dropdown active">
+    <a href="{% url 'cursos' %}" >
+        Cursos
+    </a>
+</li>
+<!-- End Cursos -->
+
+<!-- Loja Virtual -->
+<li>
+    <a href="javascript:void(0);">
+        Loja Virtual
+    </a>
+</li>
+<!-- End Loja Virtual -->
+
+<!-- Contato -->
+<li>
+    <a href="{% url 'contato' %}">
+        Contato
+    </a>
+</li>
+<!-- Ens Contato -->
+{% endblock %}
+
+
+{% block content%}
+<!--=== Content Part ===-->
+    <div class="container content">
+        <div class="row">
+                <div class="row tab-v3">
+                    <div class="col-sm-3">
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="#home-2" data-toggle="tab"><i class="fa fa-desktop"></i> Apresentação</a></li>
+                            <li><a href="#profile-2" data-toggle="tab"><i class="fa fa-graduation-cap"></i>Palestrante</a></li>
+                            <li  class="active"><a href="#messages-2" data-toggle="tab"><i class="fa fa-pencil"></i> Inscrição</a></li>
+                        </ul>
+                    </div>
+
+            <div class="col-md-9 md-margin-bottom-60 tab-content">
+                <div class="blog margin-bottom-40">
+
+                </div>
+            </div>
+            <!-- End Left Sidebar -->
+            <!-- End Right Sidebar -->
+        </div><!--/row-->
+    </div><!--/container-->
+    </div>
+    <!--=== End Content Part ===-->
+{% endblock %}

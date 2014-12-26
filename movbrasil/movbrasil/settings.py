@@ -37,9 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
-    'dados_basicos',
-    'cursos',
-
+    'movBrasil_app',
 )
 
 MIDDLEWARE_CLASSES = (

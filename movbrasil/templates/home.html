@@ -79,8 +79,7 @@
                         data-endeasing="Power1.easeIn"
                         data-captionhidden="off"
                         style="z-index: 6">
-                        Unify is creative technology company providing key digital services on web and mobile. <br>
-                        We minimize the gap between technology and its audience.
+                        {{chamada|linebreaks}}
                     </div>
 
                     <!-- LAYER -->
@@ -112,58 +111,21 @@
     <div class="container content" style="margin-top:30px;">
         <div class="headline"><h2>Próximos Cursos</h2></div>
         <div class="row margin-bottom-20">
-            <div class="col-md-3 col-sm-6">
-                <div class="thumbnails thumbnail-style thumbnail-kenburn">
-                    <div class="thumbnail-img">
-                        <div class="overflow-hidden">
-                            <img class="img-responsive" src="{% static 'img/masonry/blog1.jpg' %}" alt="">
+            {% for curso in cursos %}
+                <div class="col-md-3 col-sm-6">
+                    <div class="thumbnails thumbnail-style thumbnail-kenburn">
+                        <div class="thumbnail-img">
+                            <div class="overflow-hidden">
+                                <img class="img-responsive" src="../{{curso.img_curso.url}}"  alt="">
+                            </div>
+                            <a class="btn-more hover-effect" href="#"> saiba mais +</a>
                         </div>
-                        <a class="btn-more hover-effect" href="#"> saiba mais +</a>
-                    </div>
-                    <div class="caption">
-                        <h3><a class="hover-effect" href="#">Project One</a></h3>
+                        <div class="caption">
+                            <h3><a class="hover-effect" href="#">{{ curso.titulo }}</a></h3>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="thumbnails thumbnail-style thumbnail-kenburn">
-                    <div class="thumbnail-img">
-                        <div class="overflow-hidden">
-                            <img class="img-responsive" src="{% static 'img/masonry/blog2.jpg' %}" alt="">
-                        </div>
-                        <a class="btn-more hover-effect" href="#">saiba mais +</a>
-                    </div>
-                    <div class="caption">
-                        <h3><a class="hover-effect" href="#">Project Two</a></h3>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="thumbnails thumbnail-style thumbnail-kenburn">
-                    <div class="thumbnail-img">
-                        <div class="overflow-hidden">
-                            <img class="img-responsive" src="{% static 'img/masonry/blog3.jpg' %}" alt="">
-                        </div>
-                        <a class="btn-more hover-effect" href="#">saiba mais +</a>
-                    </div>
-                    <div class="caption">
-                        <h3><a class="hover-effect" href="#">Project Three</a></h3>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="thumbnails thumbnail-style thumbnail-kenburn">
-                    <div class="thumbnail-img">
-                        <div class="overflow-hidden">
-                            <img class="img-responsive" src="{% static 'img/masonry/blog4.jpg' %}" alt="">
-                        </div>
-                        <a class="btn-more hover-effect" href="#">saiba mais +</a>
-                    </div>
-                    <div class="caption">
-                        <h3><a class="hover-effect" href="#">Project Four</a></h3>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
         <!-- End Recent Works -->
 
@@ -171,29 +133,11 @@
     <div id="carousel_partners" class="container">
     <div class="headline"><h2>Nossos parceiros</h2></div>
         <ul class="list-inline owl-carousel-v6 owl-slider-v6 margin-bottom-50">
+            {% for parceiro in parceiros %}
             <li class="owl-carousel-item">
-                <img src="{% static 'img/clients3/1.png' %}" alt="">
+                <img  src="../{{parceiro.foto.url}}"  alt="">
             </li>
-            <li class="owl-carousel-item">
-                <img src="{% static 'img/clients3/2.png' %}" alt="">
-            </li>
-            <li class="owl-carousel-item">
-                <img src="{% static 'img/clients3/3.png' %}" alt="">
-            </li>
-            <li class="owl-carousel-item">
-                <img src="{% static 'img/clients3/4.png' %}" alt="">
-            </li>
-
-            <li class="owl-carousel-item">
-                <img src="{% static 'img/clients3/4.png' %}" alt="">
-            </li>
-            <li class="owl-carousel-item">
-                <img src="{% static 'img/clients3/4.png' %}" alt="">
-            </li>
-            <li class="owl-carousel-item">
-                <img src="{% static 'img/clients3/4.png' %}" alt="">
-            </li>
-
+            {% endfor %}
         </ul>
     </div><!--/container-->
     <!--=== End Owl Carousel v6 ===-->

@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    <title> MovBrasil - Cursos </title>
+{% endblock %}
+
+{% block topbar %}
+<!-- Quem somos -->
+<li>
+    <a href="{% url 'quem_somos' %}">
+        Quem somos
+    </a>
+</li>
+<!-- End Home -->
+
+<!-- Cursos -->
+<li class="dropdown active">
+    <a href="{% url 'cursos' %}" >
+        Cursos
+    </a>
+</li>
+<!-- End Cursos -->
+
+<!-- Loja Virtual -->
+<li>
+    <a href="javascript:void(0);">
+        Loja Virtual
+    </a>
+</li>
+<!-- End Loja Virtual -->
+
+<!-- Contato -->
+<li>
+    <a href="{% url 'contato' %}">
+        Contato
+    </a>
+</li>
+<!-- Ens Contato -->
+{% endblock %}
+
+
+{% block content%}
+<!--=== Content Part ===-->
+    <div class="container content">
+        <div class="row">
+                <div class="row tab-v3">
+                    <div class="col-sm-3">
+                        <ul class="nav nav-pills nav-stacked">
+                            <li class="active"><a href="#home-2" data-toggle="tab"><i class="fa fa-desktop"></i> Apresentação</a></li>
+                            <li><a href="#profile-2" data-toggle="tab"><i class="fa fa-graduation-cap"></i>Palestrante</a></li>
+                            <li><a href="#messages-2" data-toggle="tab"><i class="fa fa-pencil"></i> Inscrição</a></li>
+                        </ul>
+                    </div>
+
+            <div class="col-md-9 md-margin-bottom-60 tab-content">
+                <div class="blog margin-bottom-40">
+                    <h2><a href="blog_item_option1.html">Unify is an incredibly beautiful and fully responsive Bootstrap 3 Template</a></h2>
+                    <div class="blog-post-tags">
+                        <ul class="list-unstyled list-inline blog-info">
+                            <li><i class="fa fa-calendar"></i> February 02, 2013</li>
+                            <li><i class="fa fa-pencil"></i> Diana Anderson</li>
+                            <li><i class="fa fa-comments"></i> <a href="#">24 Comments</a></li>
+                        </ul>
+                    </div>
+                    <div class="blog-img">
+                        <img class="img-responsive" src="{% static 'img/posts/2.jpg' %}" alt="">
+                    </div>
+                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, mollitia animi, id est laborum et dolorum fug consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna.</p><br>
+                    <div class="tag-box tag-box-v2">
+                        <p>Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet consectetur adipiscing elit. Fusce condimentum eleifend enim a feugiatt non libero consectetur adipiscing elit magna. Sed et quam lacus. Condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat.</p>
+                    </div>
+                    <p>Officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, mollitia animi, id est laborum et dolorum fug consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus. Fusce condimentum eleifend.</p>
+                    <p>Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus. Fusce condimentum</p><br>
+                    <blockquote>
+                        <p>Award winning digital agency. We bring a personal and effective approach to every project we work on, which is why.</p>
+                        <small>CEO Jack Bour</small>
+                    </blockquote>
+                    <p>Deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, mollitia animi, id est laborum et dolorum fug consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus.</p>
+                </div>
+            </div>
+            <!-- End Left Sidebar -->
+            <!-- End Right Sidebar -->
+        </div><!--/row-->
+    </div><!--/container-->
+    </div>
+    <!--=== End Content Part ===-->
+{% endblock %}
