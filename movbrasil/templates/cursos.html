@@ -67,35 +67,24 @@
 
                 {% endfor %}
 
-<div class="pagination">
-    <span class="step-links">
-        {% if cursos.has_previous %}
-            <a href="?page={{ cursos.previous_page_number }}">previous</a>
-        {% endif %}
-
-        <span class="current">
-            Page {{ cursos.number }} of {{ cursos.paginator.num_pages }}.
-        </span>
-
-        {% if cursos.has_next %}
-            <a href="?page={{ cursos.next_page_number }}">next</a>
-        {% endif %}
-    </span>
-</div>
-
                 <!--Pagination-->
                 <div class="text-center">
                     <ul class="pagination">
-                        <li><a href="#">«</a></li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li class="active"><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">6</a></li>
-                        <li><a href="#">7</a></li>
-                        <li><a href="#">8</a></li>
-                        <li><a href="#">»</a></li>
+                        {% if cursos.has_previous %}
+                            <li><a href="?page={{ cursos.previous_page_number }}">«</a></li>
+                        {% endif %}
+
+                        {% for page_aux in pages_number_aux %}
+                            {% if page_aux.number == cursos.number  %}
+                                <li class="active"><a href="?page={{ cursos.number }}">{{ cursos.number }}</a></li>
+                            {% else %}
+                                <li><a href="?page={{ page_aux.number }}">{{ page_aux.number }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if cursos.has_next %}
+                            <li><a href="?page={{ cursos.next_page_number }}">»</a></li>
+                        {% endif %}
                     </ul>
                 </div>
                 <!--End Pagination-->
