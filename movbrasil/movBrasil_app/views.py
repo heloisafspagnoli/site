@@ -32,8 +32,14 @@ def cursos_view(request):
         returned_page = pages.page(1)
     except EmptyPage:
         returned_page = pages.page(pages.num_pages)
+    
+    aux = []
+    i = 1
+    while i <= pages.num_pages:
+        aux.append(pages.page(i))
+        i = i + 1
 
-    return render_to_response('cursos.html', {'cursos': returned_page})
+    return render_to_response('cursos.html', {'cursos': returned_page, 'pages_number_aux': aux})
 
 def getCurso(request, cursoSlug):
     curso = curso_model.objects.filter(slug=cursoSlug)
