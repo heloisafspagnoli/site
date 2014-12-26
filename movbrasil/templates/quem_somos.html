@@ -45,7 +45,7 @@
     <div class="container content">
         <div class="title-box-v2">
             <h2>Sobre a<span class="color-green" style="text-transform: none"> MovBrasil</span></h2>
-            <p>{{ descricao }}</p>
+            <p>{{ descricao}}</p>
         </div>
 
         <!-- About Sldier -->
@@ -94,7 +94,7 @@
                             <img alt="" src="../{{pessoa.foto.url}}" class="img-responsive"/>
                         {% endif %}
                         <h3><a>{{ pessoa.nome }}</a></h3>
-                        <p> A prática cotidiana prova que o julgamento imparcial das eventualidades facilita a criação da gestão inovadora da qual fazemos parte. </p>
+                        <p> {{ pessoa.resumo }}</p>
                         <ul class="list-unstyled qms_fa">
                             <li>
                                 <i class="fa fa-envelope"></i>

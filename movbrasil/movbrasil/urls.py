@@ -3,16 +3,13 @@ from django.contrib import admin
 from django.conf import settings
 from django.views.generic import TemplateView 
 
-urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'movbrasil.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
+from movBrasil_app.views import pag_inicial_view, quem_somos_view, cursos_view
 
-    url(r'^$', TemplateView.as_view(template_name="home.html"), name="home"),
+urlpatterns = patterns('',
+    url(r'^$', pag_inicial_view, name="home"),
+    url(r'^quem_somos/', quem_somos_view, name="quem_somos"),
+    url(r'^cursos/', cursos_view, name="cursos"),
     url(r'^contato/', TemplateView.as_view(template_name="contato.html"), name="contato"),
-    url(r'^erro/', TemplateView.as_view(template_name="404.html"), name="erro_404"),
-    url(r'', include('dados_basicos.urls')),
-    url(r'', include('cursos.urls')),
     url(r'^admin/', include(admin.site.urls)),
 )
 
