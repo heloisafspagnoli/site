@@ -88,6 +88,7 @@ class curso_model(models.Model):
     publico = models.CharField(max_length=100)
     ativo = models.BooleanField(default=True)
     local = models.ForeignKey(local_model)
+    slug = models.SlugField(max_length=40, unique=True)
 
     def __unicode__(self):
         return self.titulo

@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from models import chamada_model, parceiros_model, quem_somos_model, equipe_model, endereco_contato_model, local_model, curso_model, palestrantes_model, programacao_model
 
@@ -20,5 +21,22 @@ def quem_somos_view(request):
 def cursos_view(request):
     cursos = curso_model.objects.filter(ativo=True)
     cursos = cursos.order_by('data')
-    return render(request, 'cursos.html',
-                    {'cursos': cursos})
+
+    pages = Paginator(cursos, 2)
+
+    page = request.GET.get('page')
+    
+    try:
+        returned_page = pages.page(page)
+    except PageNotAnInteger:
+        returned_page = pages.page(1)
+    except EmptyPage:
+        returned_page = pages.page(pages.num_pages)
+
+    return render_to_response('cursos.html', {'cursos': returned_page})
+
+def getCurso(request, cursoSlug):
+    curso = curso_model.objects.filter(slug=cursoSlug)
+
+    # Display specified post
+    return render_to_response('curso_item_apresentacao.html', { 'curso': curso})

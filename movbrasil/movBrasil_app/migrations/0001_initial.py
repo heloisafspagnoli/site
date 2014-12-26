@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
             name='chamada_model',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('chamada', models.CharField(max_length=200)),
+                ('chamada', models.TextField(max_length=200)),
             ],
             options={
                 'verbose_name_plural': 'Chamada',
@@ -26,17 +26,19 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('titulo', models.CharField(max_length=254)),
+                ('data', models.DateField()),
                 ('img_curso', models.ImageField(null=True, upload_to=b'', blank=True)),
-                ('resumo', models.CharField(max_length=400)),
+                ('resumo', models.TextField(max_length=400)),
                 ('descricao', models.TextField(null=True, blank=True)),
                 ('material_incluso', models.TextField(null=True, blank=True)),
                 ('carga_horaria', models.CharField(max_length=100)),
                 ('publico', models.CharField(max_length=100)),
                 ('ativo', models.BooleanField(default=True)),
+                ('slug', models.SlugField(unique=True, max_length=40)),
             ],
             options={
                 'ordering': ('titulo',),
-                'verbose_name_plural': 'Curso',
+                'verbose_name_plural': 'Cursos',
             },
             bases=(models.Model,),
         ),
@@ -58,6 +60,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('nome', models.CharField(max_length=200)),
+                ('resumo', models.TextField(max_length=300)),
                 ('tel', models.CharField(max_length=11)),
                 ('e_mail', models.EmailField(max_length=75)),
                 ('foto', models.ImageField(null=True, upload_to=b'', blank=True)),
