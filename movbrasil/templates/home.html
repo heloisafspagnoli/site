@@ -118,10 +118,10 @@
                             <div class="overflow-hidden">
                                 <img class="img-responsive" src="../{{curso.img_curso.url}}"  alt="">
                             </div>
-                            <a class="btn-more hover-effect" href="#"> saiba mais +</a>
+                            <a class="btn-more hover-effect" href="{% url  'curso_item' curso.slug %}"> saiba mais +</a>
                         </div>
                         <div class="caption">
-                            <h3><a class="hover-effect" href="#">{{ curso.titulo }}</a></h3>
+                            <h3><a class="hover-effect" href="{% url  'curso_item' curso.slug %}">{{ curso.titulo }}</a></h3>
                         </div>
                     </div>
                 </div>
