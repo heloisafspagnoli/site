@@ -10,7 +10,7 @@ urlpatterns = patterns('',
     url(r'^quem_somos/', quem_somos_view, name="quem_somos"),
     url(r'^cursos/', cursos_view, name='cursos'),
     url(r'^cursos/(?P<selected_page>\d+)/?$', cursos_view),
-    url(r'^curso_item/(?P<cursoSlug>[-a-zA-Z0-9]+)/?$', getCurso_view, name='curso_item'),
+    url(r'^curso/(?P<cursoSlug>[-a-zA-Z0-9]+)/?$', getCurso_view, name='curso_item'),
     url(r'^contato/', TemplateView.as_view(template_name="contato.html"), name="contato"),
     url(r'^admin/', include(admin.site.urls)),
 )

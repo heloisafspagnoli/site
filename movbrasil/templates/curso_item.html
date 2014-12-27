@@ -5,6 +5,10 @@
     <title> MovBrasil - Cursos </title>
 {% endblock %}
 
+ {% block add_css %}
+    <link rel="stylesheet" href="{% static 'css/pages/profile.css' %}">
+{% endblock %}
+
 {% block topbar %}
 <!-- Quem somos -->
 <li>
@@ -41,48 +45,108 @@
 
 
 {% block content%}
-<!--=== Content Part ===-->
     <div class="container content">
         <div class="row">
-                <div class="row tab-v3">
-                    <div class="col-sm-3">
-                        <ul class="nav nav-pills nav-stacked">
-                            <li class="active"><a href="#home-2" data-toggle="tab"><i class="fa fa-desktop"></i> Apresentação</a></li>
-                            <li><a href="#profile-2" data-toggle="tab"><i class="fa fa-graduation-cap"></i>Palestrante</a></li>
-                            <li><a href="#messages-2" data-toggle="tab"><i class="fa fa-pencil"></i> Inscrição</a></li>
-                        </ul>
-                    </div>
+            <div class="row tab-v3">
 
-            <div class="col-md-9 md-margin-bottom-60 tab-content">
-                <div class="blog margin-bottom-40">
-                    <h2><a href="blog_item_option1.html">Unify is an incredibly beautiful and fully responsive Bootstrap 3 Template</a></h2>
-                    <div class="blog-post-tags">
-                        <ul class="list-unstyled list-inline blog-info">
-                            <li><i class="fa fa-calendar"></i> February 02, 2013</li>
-                            <li><i class="fa fa-pencil"></i> Diana Anderson</li>
-                            <li><i class="fa fa-comments"></i> <a href="#">24 Comments</a></li>
-                        </ul>
+                <!--===Menu Part ===-->
+                <div class="col-sm-3">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li class="menu_curso active" id="menu_apresentacao"><a href="javascript:void(0);" data-toggle="tab"><i class="fa fa-desktop"></i> Apresentação</a></li>
+                        <li class="menu_curso" id="menu_palestrante"><a href="javascript:void(0);" data-toggle="tab"><i class="fa fa-graduation-cap"></i>Palestrante</a></li>
+                        <li class="menu_curso" id="menu_inscricao"><a href="javascript:void(0);" data-toggle="tab"><i class="fa fa-pencil"></i> Inscrição</a></li>
+                    </ul>
+                </div>
+                <!--=== End Menu Part ===-->
+
+
+                <div class="col-md-9 md-margin-bottom-60 tab-content">
+                    <div class="blog margin-bottom-40">
+
+                    <!--===Inicio Apresentacao ===-->
+                        <div class="curso_dados" id="curso_apresentacao" style="display:block;">
+                            <h2><a href="blog_item_option1.html">Unify is an incredibly beautiful and fully responsive Bootstrap 3 Template</a></h2>
+                            <div class="blog-post-tags">
+                                <ul class="list-unstyled list-inline blog-info">
+                                    <li><i class="fa fa-calendar"></i> February 02, 2013</li>
+                                    <li><i class="fa fa-pencil"></i> Diana Anderson</li>
+                                    <li><i class="fa fa-comments"></i> <a href="#">24 Comments</a></li>
+                                </ul>
+                            </div>
+                            <div class="blog-img">
+                                <img class="img-responsive" src="{% static 'img/posts/2.jpg' %}" alt="">
+                            </div>
+                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, mollitia animi, id est laborum et dolorum fug consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna.</p><br>
+                            <div class="tag-box tag-box-v2">
+                                <p>Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet consectetur adipiscing elit. Fusce condimentum eleifend enim a feugiatt non libero consectetur adipiscing elit magna. Sed et quam lacus. Condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat.</p>
+                            </div>
+                            <p>Officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, mollitia animi, id est laborum et dolorum fug consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus. Fusce condimentum eleifend.</p>
+                            <p>Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus. Fusce condimentum</p><br>
+                            <blockquote>
+                            <p>Award winning digital agency. We bring a personal and effective approach to every project we work on, which is why.</p>
+                            <small>CEO Jack Bour</small>
+                            </blockquote>
+                            <p>Deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, mollitia animi, id est laborum et dolorum fug consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus.</p>
+                        </div>
+                    <!--===Fim Apresentacao ===-->
+
+                     <!--===Inicio Palestrante ===-->
+                        <div class="curso_dados" id="curso_palestrante" style="display:none">
+                            <div class="profile-bio">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <img class="img-responsive md-margin-bottom-10" src="{% static 'img/team/5.jpg' %}" alt="">
+                                    </div>
+                                    <div class="col-md-7">
+                                        <h2>Edward Rooster</h2>
+                                        <span><strong>Job:</strong> Web Developer</span>
+                                        <span><strong>Position:</strong> Web Designer</span>
+                                        <hr>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget massa nec turpis congue bibendum. Integer nulla felis, porta suscipit nulla et, dignissim commodo nunc. Morbi a semper nulla.</p>
+                                        <p>Proin mauris odio, pharetra quis ligula non, vulputate vehicula quam. Nunc in libero vitae nunc ultricies tincidunt ut sed leo. Sed luctus dui ut congue consequat. Cras consequat nisl ante, nec malesuada velit pellentesque ac. Pellentesque nec arcu in ipsum iaculis convallis.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <!--===Fim Palestrante ===-->
+
+                    <!--===Inicio Inscrição ===-->
+                        <div class="curso_dados" id="curso_inscricao" style="display:none">
+                        </div>
+                    <!--===Fim Inscrição ===-->
+
                     </div>
-                    <div class="blog-img">
-                        <img class="img-responsive" src="{% static 'img/posts/2.jpg' %}" alt="">
-                    </div>
-                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, mollitia animi, id est laborum et dolorum fug consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna.</p><br>
-                    <div class="tag-box tag-box-v2">
-                        <p>Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet consectetur adipiscing elit. Fusce condimentum eleifend enim a feugiatt non libero consectetur adipiscing elit magna. Sed et quam lacus. Condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat.</p>
-                    </div>
-                    <p>Officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, mollitia animi, id est laborum et dolorum fug consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus. Fusce condimentum eleifend.</p>
-                    <p>Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus. Fusce condimentum</p><br>
-                    <blockquote>
-                        <p>Award winning digital agency. We bring a personal and effective approach to every project we work on, which is why.</p>
-                        <small>CEO Jack Bour</small>
-                    </blockquote>
-                    <p>Deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, mollitia animi, id est laborum et dolorum fug consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus.</p>
                 </div>
             </div>
-            <!-- End Left Sidebar -->
-            <!-- End Right Sidebar -->
-        </div><!--/row-->
-    </div><!--/container-->
+        </div>
     </div>
-    <!--=== End Content Part ===-->
+{% endblock %}
+
+{% block js %}
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+          $(".menu_curso").click(function(){
+                $(".menu_curso").removeClass("active");
+                $(".curso_dados").hide();
+
+                $(this).addClass("active");
+
+                switch ( this.id ) {
+                    case "menu_apresentacao":
+                        $("#curso_apresentacao").show();
+                        break;
+                    case "menu_palestrante":
+                        $("#curso_palestrante").show();
+                        break;
+                    case "menu_inscricao":
+                        $("#curso_inscricao").show();
+                        break;
+                    default:
+                        $("#menu_apresentacao").addClass("active");
+                        $("#curso_apresentacao").css("display","block");
+                }
+          });
+        });
+    </script>
 {% endblock %}
