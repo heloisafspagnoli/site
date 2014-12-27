@@ -41,8 +41,7 @@ def cursos_view(request):
 
     return render_to_response('cursos.html', {'cursos': returned_page, 'pages_number_aux': aux})
 
-def getCurso(request, cursoSlug):
-    curso = curso_model.objects.filter(slug=cursoSlug)
+def getCurso_view(request, cursoSlug):
+    curso_item = curso_model.objects.filter(slug=cursoSlug)
 
-    # Display specified post
-    return render_to_response('curso_item_apresentacao.html', { 'curso': curso})
+    return render_to_response('curso_item.html', {'curso_item': curso_item})
