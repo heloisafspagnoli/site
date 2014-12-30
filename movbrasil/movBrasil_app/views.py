@@ -1,7 +1,10 @@
 from django.shortcuts import render, render_to_response
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-from models import chamada_model, parceiros_model, quem_somos_model, equipe_model, endereco_contato_model, local_model, curso_model, palestrantes_model, programacao_model
+from models import chamada_model, parceiros_model, quem_somos_model,\
+                   equipe_model, endereco_contato_model, local_model,\
+                   curso_model, palestrantes_model, programacao_model,\
+                   material_incluso_model
 
 def pag_inicial_view(request):
     chamada = chamada_model.objects.first().chamada
@@ -10,7 +13,8 @@ def pag_inicial_view(request):
     cursos = cursos[:4]
     parceiros = parceiros_model.objects.all()
     return render(request, 'home.html',
-                    {'chamada': chamada, 'cursos': cursos, 'parceiros': parceiros})
+                    {'chamada': chamada, 'cursos': cursos,
+                        'parceiros': parceiros})
 
 def quem_somos_view(request):
     descricao = quem_somos_model.objects.first().descricao
@@ -39,9 +43,26 @@ def cursos_view(request):
         aux.append(pages.page(i))
         i = i + 1
 
-    return render_to_response('cursos.html', {'cursos': returned_page, 'pages_number_aux': aux})
+    return render_to_response('cursos.html', {'cursos': returned_page,
+                                                'pages_number_aux': aux})
 
 def getCurso_view(request, cursoSlug):
-    curso_item = curso_model.objects.filter(slug=cursoSlug)
+    curso_item = curso_model.objects.filter(slug=cursoSlug).first()
+    materiais = curso_item.material_incluso.order_by('nome')
+    programacao = curso_item.programacao.order_by('data', 'hora')
+    
+    palestrantes = []
+    for programa in programacao:    
+        palestrantes_aux = programa.palestrantes.all()
+        for palestrante in palestrantes_aux:
+            palestrantes.append(palestrante)
 
-    return render_to_response('curso_item.html', {'curso_item': curso_item})
+    palestrantes = list(set(palestrantes))
+    
+    return render_to_response('curso_item.html',
+                                {
+                                    'curso_item': curso_item, 
+                                    'materiais': materiais, 
+                                    'programacao': programacao, 
+                                    'palestrantes':palestrantes
+                                })

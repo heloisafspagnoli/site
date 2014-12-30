@@ -54,7 +54,15 @@
                 <div class="col-sm-3">
                     <ul class="nav nav-pills nav-stacked">
                         <li class="menu_curso active" id="menu_apresentacao"><a href="javascript:void(0);" data-toggle="tab"><i class="fa fa-desktop"></i> Apresentação</a></li>
-                        <li class="menu_curso" id="menu_palestrante"><a href="javascript:void(0);" data-toggle="tab"><i class="fa fa-graduation-cap"></i>Palestrante</a></li>
+                        <li class="menu_curso" id="menu_palestrante">
+                            <a href="javascript:void(0);" data-toggle="tab"><i class="fa fa-graduation-cap"></i>
+                                {% if  num_palestrantes > 1 %}
+                                    Ministrantes
+                                {% else %}
+                                    Ministrante
+                                {% endif %}
+                            </a></li>
+                        <li class="menu_curso" id="menu_programacao"><a href="javascript:void(0);" data-toggle="tab"><i class="fa  fa-book"></i>Programação</a></li>
                         <li class="menu_curso" id="menu_inscricao"><a href="javascript:void(0);" data-toggle="tab"><i class="fa fa-pencil"></i> Inscrição</a></li>
                     </ul>
                 </div>
@@ -66,135 +74,107 @@
 
                     <!--===Inicio Apresentacao ===-->
                         <div class="curso_dados" id="curso_apresentacao" style="display:block;">
-                            <h2>Unify is an incredibly beautiful and fully responsive Bootstrap 3 Template</h2>
+                            <h2>{{ curso_item.titulo }}</h2>
                             <div class="blog-post-tags">
                                 <ul class="list-unstyled list-inline blog-info">
-                                    <li><i class="fa fa-calendar"></i> February 02, 2013</li>
-                                    <li><i class="fa fa-pencil"></i> Diana Anderson</li>
-                                    <li><i class="fa fa-comments"></i> <a href="#">24 Comments</a></li>
+                                    <li><i class="fa fa-calendar"></i> {{curso_item.data }}</li>
+                                    <li><i class="fa fa-dot-circle-o"></i> {{curso_item.publico }} </li>
                                 </ul>
                             </div>
                             <div class="blog-img">
-                                <img class="img-responsive" src="{% static 'img/posts/2.jpg' %}" alt="">
+                                <img class="img-responsive" src="../{{curso_item.img.url}}" alt="">
                             </div>
-                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, mollitia animi, id est laborum et dolorum fug consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna.</p><br>
-                            <div class="tag-box tag-box-v2">
-                                <p>Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet consectetur adipiscing elit. Fusce condimentum eleifend enim a feugiatt non libero consectetur adipiscing elit magna. Sed et quam lacus. Condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat.</p>
+                            <p>{{ curso_item.descricao }} </p>
+
+                            <div id="material_incluso">
+                                <h5><b> Material Incluso </b></h5>
+                                <ul class="list-unstyled">
+                                    {% for item in materiais %}
+                                        <li> <i class="fa fa-check color-green"></i> {{ item.nome}} </li>
+                                    {% endfor %}
+                                </ul>
                             </div>
-                            <p>Officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, mollitia animi, id est laborum et dolorum fug consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus. Fusce condimentum eleifend.</p>
-                            <p>Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus. Fusce condimentum</p><br>
-                            <blockquote>
-                            <p>Award winning digital agency. We bring a personal and effective approach to every project we work on, which is why.</p>
-                            <small>CEO Jack Bour</small>
-                            </blockquote>
-                            <p>Deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, mollitia animi, id est laborum et dolorum fug consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus.</p>
 
-                            <!-- Início Programação -->
+                            <br>
 
-                            <div class="panel-group acc-v1" id="accordion-1">
-                            <h3> Programação </h3>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title">
-                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-1" href="#collapse-One">
-                                                Collapsible Group Item #1
-                                            </a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapse-One" class="panel-collapse collapse in">
-                                        <div class="panel-body">
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <img class="img-responsive" src="{% static 'img/new/img5.jpg' %}" alt="">
-                                                </div>
-                                                <div class="col-md-8">
-                                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title">
-                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-1" href="#collapse-Two">
-                                                Collapsible Group Item #2
-                                            </a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapse-Two" class="panel-collapse collapse">
-                                        <div class="panel-body">
-                                            <div class="row">
-                                                <div class="col-md-8">
-                                                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.</p>
-                                                    <ul class="list-unstyled">
-                                                        <li><i class="fa fa-check color-green"></i> Donec id elit non mi porta gravida at eget metus..</li>
-                                                        <li><i class="fa fa-check color-green"></i> Fusce dapibus, tellus ac cursus comodo egetine..</li>
-                                                        <li><i class="fa fa-check color-green"></i> Food truck quinoa nesciunt laborum eiusmod runch..</li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <img class="img-responsive" src="% static 'img/main/6.jpg'%}" alt="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title">
-                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-1" href="#collapse-Three">
-                                                Collapsible Group Item #3
-                                            </a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapse-Three" class="panel-collapse collapse">
-                                        <div class="panel-body">
-                                            Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Food truck quinoa nesciunt laborum eiusmodolf moon tempor, sunt aliqua put a bird. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title">
-                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-1" href="#collapse-Four">
-                                                Collapsible Group Item #4
-                                            </a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapse-Four" class="panel-collapse collapse">
-                                        <div class="panel-body">
-                                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="shadow-wrapper">
+                            <div class="tag-box tag-box-v1 box-shadow shadow-effect-2">
+                                <h4> Local </h4>
+                                <p>{{ curso_item.local.nome }}</p>
+                                <p>{{ curso_item.local.endereco }}, {{ curso_item.local.numero }}
+                                        {% if curso_item.local.complemento %}
+                                            , {{ curso_item.local.complemento }}
+                                        {% endif %}
+                                </p>
+                                <p>{{ curso_item.local.bairro }}</p>
+                                <p>{{ curso_item.local.cidade }} - {{ curso_item.local.estado }}</p>
                             </div>
-                            <!-- Fim Programação -->
-
-
+                        </div>
                         </div>
                     <!--===Fim Apresentacao ===-->
 
+                    <!--===Inicio Programação ===-->
+                        <div class="curso_dados" id="curso_programacao" style="display:none; margin-top: 20px;">
+                                <div class="col-md-12">
+                                <!-- Default Light Panel -->
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title"><i class="fa fa-bookmark-o"></i> Default Light Panel</h3>
+                                        </div>
+                                        <div class="panel-body">
+                                            <h4>Default Bootstrap Panel</h4>
+                                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
+                                        </div>
+                                    </div>
+                                <!-- End Default Light Panel -->
+                            </div>
+
+                            <div class="col-md-12">
+                                <!-- Default Light Panel -->
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title"><i class="fa fa-bookmark-o"></i> Default Light Panel</h3>
+                                        </div>
+                                        <div class="panel-body">
+                                            <h4>Default Bootstrap Panel</h4>
+                                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
+                                        </div>
+                                    </div>
+                                <!-- End Default Light Panel -->
+                            </div>
+
+                            <div class="col-md-12">
+                                <!-- Default Light Panel -->
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title"><i class="fa fa-bookmark-o"></i> Default Light Panel</h3>
+                                        </div>
+                                        <div class="panel-body">
+                                            <h4>Default Bootstrap Panel</h4>
+                                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
+                                        </div>
+                                    </div>
+                                <!-- End Default Light Panel -->
+                            </div>
+                        </div>
+                    <!--===Fim Programação ===-->
+
                      <!--===Inicio Palestrante ===-->
                         <div class="curso_dados profile" id="curso_palestrante" style="display:none">
-                            <div class="profile-bio">
-                                <div class="row">
-                                    <div class="col-md-5">
-                                        <img class="img-responsive md-margin-bottom-10" src="{% static 'img/team/5.jpg' %}" alt="">
-                                    </div>
-                                    <div class="col-md-7">
-                                        <h2>Edward Rooster</h2>
-                                        <span><strong>Job:</strong> Web Developer</span>
-                                        <span><strong>Position:</strong> Web Designer</span>
-                                        <hr>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget massa nec turpis congue bibendum. Integer nulla felis, porta suscipit nulla et, dignissim commodo nunc. Morbi a semper nulla.</p>
-                                        <p>Proin mauris odio, pharetra quis ligula non, vulputate vehicula quam. Nunc in libero vitae nunc ultricies tincidunt ut sed leo. Sed luctus dui ut congue consequat. Cras consequat nisl ante, nec malesuada velit pellentesque ac. Pellentesque nec arcu in ipsum iaculis convallis.</p>
+                            {% for palestrante in palestrantes %}
+                                <div class="profile-bio">
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <img class="img-responsive md-margin-bottom-10" src="../{{palestrante.foto.url}}"  alt="">
+                                        </div>
+                                        <div class="col-md-7">
+                                            <h2>{{palestrante.nome}}</h2>
+                                            <hr>
+                                            <p>{{palestrante.resumo}}</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            {% endfor %}
                         </div>
                     <!--===Fim Palestrante ===-->
 
@@ -238,6 +218,9 @@
                 switch ( this.id ) {
                     case "menu_apresentacao":
                         $("#curso_apresentacao").show();
+                        break;
+                    case "menu_programacao":
+                        $("#curso_programacao").show();
                         break;
                     case "menu_palestrante":
                         $("#curso_palestrante").show();

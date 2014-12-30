@@ -38,9 +38,23 @@ h1, h2, h3, h4, h5, h6, p, small, a, span, body {
     color: #72c02c !important;
     font-size: 25px !important;
 }
-.curso_dados h3 {
+
+#curso_apresentacao h3 {
     color: #72c02c;
-    font-size: 21px;
+    font-size: 24px;
     margin-bottom: 25px;
     margin-top: 25px;
 }
+
+#curso_apresentacao h4 {
+    color: #72c02c;
+    font-size: 20px;
+}
+
+#material_incluso {
+    margin-top: 30px;
+    padding-top: 10px;
+    padding-left: 20px;
+    border-top: 1px solid #eee;
+}
+
