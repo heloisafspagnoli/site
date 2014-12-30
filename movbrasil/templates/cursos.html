@@ -50,7 +50,7 @@
                 {% for curso in cursos %}
                 <div class="row blog blog-medium margin-bottom-40">
                     <div class="col-md-5">
-                        <img class="img-responsive" src="../{{curso.img_curso.url}}" alt="">
+                        <img class="img-responsive" src="../{{curso.img.url}}" alt="">
                     </div>
                     <div class="col-md-7">
                         <h2><a href="{% url  'curso_item' curso.slug %}">{{ curso.titulo }}</a></h2>

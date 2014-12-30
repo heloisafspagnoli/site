@@ -27,10 +27,9 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('titulo', models.CharField(max_length=254)),
                 ('data', models.DateField()),
-                ('img_curso', models.ImageField(null=True, upload_to=b'', blank=True)),
+                ('img', models.ImageField(upload_to=b'')),
                 ('resumo', models.TextField(max_length=400)),
-                ('descricao', models.TextField(null=True, blank=True)),
-                ('material_incluso', models.TextField(null=True, blank=True)),
+                ('descricao', models.TextField()),
                 ('carga_horaria', models.CharField(max_length=100)),
                 ('publico', models.CharField(max_length=100)),
                 ('ativo', models.BooleanField(default=True)),
@@ -46,12 +45,11 @@ class Migration(migrations.Migration):
             name='endereco_contato_model',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('endereco', models.CharField(max_length=200)),
                 ('e_mail', models.EmailField(max_length=75)),
                 ('telefone', models.CharField(max_length=15)),
             ],
             options={
-                'verbose_name_plural': 'Endere\xe7o e contato da empresa',
+                'verbose_name_plural': 'Dados da empresa',
             },
             bases=(models.Model,),
         ),
@@ -63,7 +61,7 @@ class Migration(migrations.Migration):
                 ('resumo', models.TextField(max_length=300)),
                 ('tel', models.CharField(max_length=11)),
                 ('e_mail', models.EmailField(max_length=75)),
-                ('foto', models.ImageField(null=True, upload_to=b'', blank=True)),
+                ('foto', models.ImageField(upload_to=b'')),
             ],
             options={
                 'verbose_name_plural': 'Equipe',
@@ -74,7 +72,7 @@ class Migration(migrations.Migration):
             name='local_model',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('nome_local', models.CharField(max_length=200)),
+                ('nome', models.CharField(max_length=200)),
                 ('complemento', models.CharField(max_length=20, blank=True)),
                 ('numero', models.CharField(max_length=20)),
                 ('endereco', models.CharField(max_length=200)),
@@ -83,7 +81,18 @@ class Migration(migrations.Migration):
                 ('estado', models.CharField(max_length=100)),
             ],
             options={
-                'verbose_name_plural': 'Local',
+                'verbose_name_plural': 'Locais',
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='material_incluso_model',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('nome', models.CharField(max_length=200)),
+            ],
+            options={
+                'verbose_name_plural': 'Materias inclusos',
             },
             bases=(models.Model,),
         ),
@@ -93,7 +102,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('nome', models.CharField(max_length=200)),
                 ('resumo', models.TextField()),
-                ('foto', models.ImageField(null=True, upload_to=b'', blank=True)),
+                ('foto', models.ImageField(upload_to=b'')),
             ],
             options={
                 'ordering': ('nome',),
@@ -116,11 +125,11 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='programacao_model',
             fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('data', models.DateField()),
                 ('hora', models.TimeField()),
                 ('atividade', models.CharField(max_length=200)),
-                ('curso', models.OneToOneField(primary_key=True, serialize=False, to='movBrasil_app.curso_model')),
-                ('palestrante', models.ManyToManyField(to='movBrasil_app.palestrantes_model')),
+                ('palestrantes', models.ManyToManyField(to='movBrasil_app.palestrantes_model')),
             ],
             options={
                 'ordering': ('atividade',),
@@ -140,15 +149,27 @@ class Migration(migrations.Migration):
             bases=(models.Model,),
         ),
         migrations.AddField(
-            model_name='palestrantes_model',
-            name='cursos',
-            field=models.ManyToManyField(to='movBrasil_app.curso_model'),
+            model_name='endereco_contato_model',
+            name='local',
+            field=models.ForeignKey(to='movBrasil_app.local_model'),
             preserve_default=True,
         ),
         migrations.AddField(
             model_name='curso_model',
             name='local',
             field=models.ForeignKey(to='movBrasil_app.local_model'),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='curso_model',
+            name='material_incluso',
+            field=models.ManyToManyField(to='movBrasil_app.material_incluso_model'),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='curso_model',
+            name='programacao',
+            field=models.ManyToManyField(to='movBrasil_app.programacao_model'),
             preserve_default=True,
         ),
     ]
