@@ -1,4 +1,4 @@
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render, render_to_response, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from models import chamada_model, parceiros_model, quem_somos_model,\
@@ -47,22 +47,21 @@ def cursos_view(request):
                                                 'pages_number_aux': aux})
 
 def getCurso_view(request, cursoSlug):
-    curso_item = curso_model.objects.filter(slug=cursoSlug).first()
+    #curso_item = curso_model.objects.filter(slug=cursoSlug).first()
+    curso_item = get_object_or_404(curso_model, slug=cursoSlug)
     materiais = curso_item.material_incluso.order_by('nome')
-    programacao = curso_item.programacao.order_by('data', 'hora')
-    
-    palestrantes = []
-    for programa in programacao:    
-        palestrantes_aux = programa.palestrantes.all()
-        for palestrante in palestrantes_aux:
-            palestrantes.append(palestrante)
-
-    palestrantes = list(set(palestrantes))
+    programacao = curso_item.programacao.order_by('data')
+    palestrantes = curso_item.palestrantes.order_by('nome')
     
     return render_to_response('curso_item.html',
                                 {
                                     'curso_item': curso_item, 
                                     'materiais': materiais, 
                                     'programacao': programacao, 
-                                    'palestrantes':palestrantes
+                                    'palestrantes':palestrantes,
                                 })
+
+def contato_view(request):
+    contato = endereco_contato_model.objects.first()
+    
+    return render_to_response('contato.html', {'contato': contato})

@@ -65,10 +65,11 @@ class local_model(models.Model):
 
 
 class endereco_contato_model(models.Model):
+    assuntos = models.TextField()
     e_mail = models.EmailField()
-    telefone = models.CharField(max_length=15)
+    telefone = models.CharField(max_length=30)
     local = models.ForeignKey(local_model)
-
+    
     def __str__(self):
         return "Contato e endereço"
 
@@ -101,16 +102,14 @@ class palestrantes_model(models.Model):
 
 class programacao_model(models.Model):
     data = models.DateField()
-    hora = models.TimeField()
-    atividade = models.CharField(max_length=200)
-    palestrantes = models.ManyToManyField(palestrantes_model)
+    atividade = models.TextField()
 
     def __unicode__(self):
-        return self.atividade
+        return self.data.strftime('%d-%m-%Y')
 
     class Meta:
         verbose_name_plural="Programação"
-        ordering = ('atividade',)
+        ordering = ('data', 'atividade')
 
 
 class curso_model(models.Model):
@@ -127,6 +126,7 @@ class curso_model(models.Model):
     local = models.ForeignKey(local_model)
     material_incluso = models.ManyToManyField(material_incluso_model)
     programacao = models.ManyToManyField(programacao_model)
+    palestrantes = models.ManyToManyField(palestrantes_model)
 
     def __unicode__(self):
         return self.titulo
