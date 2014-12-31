@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+{% load text2list %}
 
 {% block title %}
     <title> MovBrasil - Cursos </title>
@@ -56,7 +57,7 @@
                         <li class="menu_curso active" id="menu_apresentacao"><a href="javascript:void(0);" data-toggle="tab"><i class="fa fa-desktop"></i> Apresentação</a></li>
                         <li class="menu_curso" id="menu_palestrante">
                             <a href="javascript:void(0);" data-toggle="tab"><i class="fa fa-graduation-cap"></i>
-                                {% if  num_palestrantes > 1 %}
+                                {% if  palestrantes|length > 1 %}
                                     Ministrantes
                                 {% else %}
                                     Ministrante
@@ -115,47 +116,22 @@
 
                     <!--===Inicio Programação ===-->
                         <div class="curso_dados" id="curso_programacao" style="display:none; margin-top: 20px;">
+                            {% for programa_dia in programacao %}
                                 <div class="col-md-12">
-                                <!-- Default Light Panel -->
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
-                                            <h3 class="panel-title"><i class="fa fa-bookmark-o"></i> Default Light Panel</h3>
+                                            <h3 class="panel-title"><i class="fa fa-calendar"></i> {{ programa_dia.data }}</h3>
                                         </div>
                                         <div class="panel-body">
-                                            <h4>Default Bootstrap Panel</h4>
-                                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
+                                            <ul class="list-unstyled">
+                                                {% for prog in programa_dia.atividade|text2list %}
+                                                    <li> <i class="fa fa-angle-right color-green"></i> {{prog}} </li>
+                                                {% endfor %}
+                                            </ul>
                                         </div>
                                     </div>
-                                <!-- End Default Light Panel -->
-                            </div>
-
-                            <div class="col-md-12">
-                                <!-- Default Light Panel -->
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h3 class="panel-title"><i class="fa fa-bookmark-o"></i> Default Light Panel</h3>
-                                        </div>
-                                        <div class="panel-body">
-                                            <h4>Default Bootstrap Panel</h4>
-                                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
-                                        </div>
-                                    </div>
-                                <!-- End Default Light Panel -->
-                            </div>
-
-                            <div class="col-md-12">
-                                <!-- Default Light Panel -->
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h3 class="panel-title"><i class="fa fa-bookmark-o"></i> Default Light Panel</h3>
-                                        </div>
-                                        <div class="panel-body">
-                                            <h4>Default Bootstrap Panel</h4>
-                                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
-                                        </div>
-                                    </div>
-                                <!-- End Default Light Panel -->
-                            </div>
+                                </div>
+                            {% endfor %}
                         </div>
                     <!--===Fim Programação ===-->
 
