@@ -58,3 +58,33 @@ h1, h2, h3, h4, h5, h6, p, small, a, span, body {
     border-top: 1px solid #eee;
 }
 
+#sky-form1 .state-error input,
+#sky-form1 .state-error select,
+#sky-form1 .state-error textarea,
+#sky-form1 .radio.state-error i,
+#sky-form1 .checkbox.state-error i,
+#sky-form1 .toggle.state-error i {
+    background: #fff0f0;
+}
+#sky-form1 .state-error select + i {
+    background: #fff0f0;
+    box-shadow: 0 0 0 12px #fff0f0;
+}
+#sky-form1 .toggle.state-error input:checked + i {
+    background: #fff0f0;
+}
+#sky-form1 #id_email + em,
+#sky-form1 #id_nome + em {
+    display: block;
+    margin-top: 6px;
+    padding: 0 1px;
+    font-style: normal;
+    font-size: 11px;
+    line-height: 15px;
+    color: #ee9393;
+}
+#sky-form1 .rating.state-error + em {
+    margin-top: -4px;
+    margin-bottom: 4px;
+}
+

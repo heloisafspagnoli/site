@@ -33,7 +33,7 @@ var Validation = function () {
 	                },
 			nome:
 	                {
-	                    required: 'Por favor, digite seu nome'
+	                    required: 'Por favor, este campo não deve ficar vazio'
 	                },
 	                email:
 	                {

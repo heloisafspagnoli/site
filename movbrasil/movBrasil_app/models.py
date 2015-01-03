@@ -122,6 +122,7 @@ class curso_model(models.Model):
     publico = models.CharField(max_length=100)
     ativo = models.BooleanField(default=True)
     slug = models.SlugField(max_length=40, unique=True)
+    preco = models.CharField(max_length=300)
 
     local = models.ForeignKey(local_model)
     material_incluso = models.ManyToManyField(material_incluso_model)

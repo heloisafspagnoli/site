@@ -115,9 +115,10 @@
                     <!--===Fim Apresentacao ===-->
 
                     <!--===Inicio Programação ===-->
-                        <div class="curso_dados" id="curso_programacao" style="display:none; margin-top: 20px;">
+                        <div class="curso_dados" id="curso_programacao" style="display:none;">
+                            <h2> Programação </h2>
                             {% for programa_dia in programacao %}
-                                <div class="col-md-12">
+                                <div class="col-md-14">
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
                                             <h3 class="panel-title"><i class="fa fa-calendar"></i> {{ programa_dia.data }}</h3>
@@ -137,6 +138,13 @@
 
                      <!--===Inicio Palestrante ===-->
                         <div class="curso_dados profile" id="curso_palestrante" style="display:none">
+                            <h2>
+                                {% if  palestrantes|length > 1 %}
+                                    Ministrantes
+                                {% else %}
+                                    Ministrante
+                                {% endif %}
+                            </h2>
                             {% for palestrante in palestrantes %}
                                 <div class="profile-bio">
                                     <div class="row">
@@ -156,6 +164,83 @@
 
                     <!--===Inicio Inscrição ===-->
                         <div class="curso_dados" id="curso_inscricao" style="display:none">
+                            <h2> Inscrições </h2>
+                            <p> Para realizar sua inscrição e pagamento, disponibilizamos duas maneiras. Uma via transferência/depósito bancário, ou então via cartão de crédito pelo PagSeguro. </p>
+                            <br>
+                            <h5><b> Investimento:</b> {{curso_item.preco}} </h5>
+                            <br>
+
+
+                            <div class="col-md-14">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title"><i class="fa-pencil-square-o"></i> Via Formulário</h3>
+                                        </div>
+                                        <div class="panel-body">
+                                        <p>Para realizar sua inscrição e pagamento, disponibilizamos duas maneiras. Uma via transferência/depósito bancário, ou então via cartão de crédito pelo PagSeguro. </p>
+
+                                        {% if form.errors %}
+                                            <div class="alert alert-danger fade in">
+                                                <strong> Erro! </strong>
+                                                <ul>
+                                                    {% for field in form %}
+                                                    {% if field.errors %} <li>{{field.label}} - {{ field.errors|striptags }}</li>{% endif %}
+                                                    {% endfor %}
+                                                </ul>
+                                                </div>
+                                            {% endif %}
+
+                                                <form action="" id="sky-form1" method="post">
+                                                    {% csrf_token %}
+
+                                                        {% for field in form %}
+
+                                                            {% if field.label == 'Nome' %}
+                                                                <label>{{field.label}}</label>
+                                                                <div class="row margin-bottom-20">
+                                                                    <div class="col-md-7 col-md-offset-0">
+                                                                        {{ field }}
+                                                                    </div>
+                                                                </div>
+                                                            {% endif %}
+
+                                                            {% if field.label == 'E-mail' %}
+                                                                <label>{{field.label}}</label>
+                                                                <div class="row margin-bottom-20">
+                                                                    <div class="col-md-7 col-md-offset-0">
+                                                                        {{ field }}
+                                                                    </div>
+                                                                </div>
+                                                            {% endif %}
+
+                                                            {% if field.label == 'Mensagem' %}
+                                                                <label>{{field.label}}</label>
+                                                                <div class="row margin-bottom-20">
+                                                                    <div class="col-md-11 col-md-offset-0">
+                                                                        {{ field }}
+                                                                    </div>
+                                                                </div>
+                                                            {% endif %}
+                                                        {%endfor%}
+                                                        <p><button type="submit" class="btn-u" id="enviar" value="Submit">Enviar</button></p>
+                                                    </form>
+                                                </div><!--/col-md-9-->
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-14">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title"><img src="{% static 'img/pagseguro2.png' %}" style="vertical-align: bottom; width: 30px;" /> Via PagSeguro</h3>
+                                        </div>
+                                        <div class="panel-body">
+                                        <p>Para realizar sua inscrição e pagamento, disponibilizamos duas maneiras. Uma via transferência/depósito bancário, ou então via cartão de crédito pelo PagSeguro. </p>
+                                        </div>
+                                    </div>
+                                </div>
                         </div>
                     <!--===Fim Inscrição ===-->
 
@@ -163,6 +248,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 {% endblock %}
 

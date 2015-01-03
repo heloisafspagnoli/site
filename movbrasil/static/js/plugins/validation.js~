@@ -12,10 +12,15 @@ var Validation = function () {
 	                {
 	                    required: true
 	                },
-	                email:
+	                E-mail:
 	                {
 	                    required: true,
 	                    email: true
+	                },
+			e-mail:
+	                {
+	                    required: true,
+	                    e-mail: true
 	                },
 	                url:
 	                {

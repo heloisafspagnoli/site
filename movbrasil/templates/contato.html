@@ -1,8 +1,13 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 {% load text2list %}
 
 {% block title %}
     <title> MovBrasil - Contato </title>
+{% endblock %}
+
+{% block add_css %}
+    <link rel="stylesheet" href="{% static 'plugins/sky-forms/version-2.0.1/css/custom-sky-forms.css' %}">
 {% endblock %}
 
 {% block topbar %}
@@ -40,51 +45,72 @@
 {% endblock %}
 
 {% block content%}
-
 <!--=== Content Part ===-->
     <div class="container content">
         <div class="row margin-bottom-30">
             <div class="col-md-9 mb-margin-bottom-30">
                 <div class="headline"><h2>Formulário para contato</h2></div>
                 <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas feugiat. Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, consectetur adipiscing elit landitiis.</p><br />
-                <form action="{% url contato %}" method="post">
 
-                    <label>Nome</label>
-                    <div class="row margin-bottom-20">
-                        <div class="col-md-7 col-md-offset-0">
-                            <input type="text" class="form-control">
+                    {% if form.errors %}
+                    <div class="alert alert-danger fade in">
+                        <strong> Erro! </strong>
+                        <ul>
+                            {% for field in form %}
+                            {% if field.errors %} <li>{{field.label}} - {{ field.errors|striptags }}</li>{% endif %}
+                            {% endfor %}
+                        </ul>
                         </div>
-                    </div>
+                    {% endif %}
 
-                    <label>E-mail <span class="color-red">*</span></label>
-                    <div class="row margin-bottom-20">
-                        <div class="col-md-7 col-md-offset-0">
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
+                        <form action="" id="sky-form1" method="post">
+                            {% csrf_token %}
 
-                    <label>Assunto</label>
-                    <div class="row margin-bottom-20">
-                        <div class="col-md-3 col-md-offset-0">
-                            <select class="form-control">
-                            {{assuntos}}
-                                {% for assunto in contato.assuntos|text2list %}
-                                    <option>{{assunto}}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                    </div>
+                                {% for field in form %}
 
-                    <label>Mensagem</label>
-                    <div class="row margin-bottom-20">
-                        <div class="col-md-11 col-md-offset-0">
-                            <textarea rows="8" class="form-control"></textarea>
-                        </div>
-                    </div>
+                                    {% if field.label == 'Nome' %}
+                                        <label>{{field.label}}</label>
+                                        <div class="row margin-bottom-20">
+                                            <div class="col-md-7 col-md-offset-0">
+                                                {{ field }}
+                                            </div>
+                                        </div>
+                                    {% endif %}
 
-                    <p><button type="submit" class="btn-u" value="contact_form">Enviar</button></p>
-                </form>
-            </div><!--/col-md-9-->
+
+
+                                    {% if field.label == 'E-mail' %}
+                                        <label>{{field.label}}</label>
+                                        <div class="row margin-bottom-20">
+                                            <div class="col-md-7 col-md-offset-0">
+                                                {{ field }}
+                                            </div>
+                                        </div>
+
+                                        <label>Assunto</label>
+                                        <div class="row margin-bottom-20">
+                                            <div class="col-md-3 col-md-offset-0">
+                                                <select class="form-control" name="assunto">
+                                                    {% for assunto in contato.assuntos|text2list %}
+                                                        <option>{{assunto}}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+
+                                    {% if field.label == 'Mensagem' %}
+                                        <label>{{field.label}}</label>
+                                        <div class="row margin-bottom-20">
+                                            <div class="col-md-11 col-md-offset-0">
+                                                {{ field }}
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {%endfor%}
+                                <p><button type="submit" class="btn-u" id="enviar" value="Submit">Enviar</button></p>
+                            </form>
+                        </div><!--/col-md-9-->
 
             <div class="col-md-3">
                 <!-- Contacts -->
@@ -97,5 +123,44 @@
             </div><!--/col-md-3-->
         </div><!--/row-->
 </div>
-
 {% endblock %}
+
+{% block js %}
+    <script type="text/javascript" src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'plugins/jquery/jquery-migrate.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+    <!-- JS Implementing Plugins -->
+    <script type="text/javascript" src="{% static 'plugins/back-to-top.js' %}"></script>
+
+
+    <!-- JS Page Level -->
+    <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
+
+    <!-- Validation Form -->
+<script src="{% static 'plugins/sky-forms/version-2.0.1/js/jquery.validate.min.js' %}"></script>
+
+<!-- JS Customization -->
+    <script type="text/javascript" src="{% static 'js/custom.js' %}"></script>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            App.init();
+            Validation.initValidation();
+
+            {% if form.errors %}
+                {% for field in form %}
+                    {% if field.errors %}
+                         var field_id = "#{{field.auto_id}}"
+                        $(field_id).css("background", "#fff0f0");
+                    {% endif %}
+               {% endfor %}
+            {% endif %}
+
+        });
+
+        $(document).ready(function(){
+          $("#enviar" ).click(function(){
+        });
+    });
+  </script>
+{% endblock%}
