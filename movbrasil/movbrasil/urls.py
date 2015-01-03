@@ -4,7 +4,7 @@ from django.conf import settings
 from django.views.generic import TemplateView 
 
 from movBrasil_app.views import pag_inicial_view, quem_somos_view, cursos_view,\
-                                getCurso_view, contato_view
+                                getCurso_view, contato_view, thanks_view
 
 urlpatterns = patterns('',
     url(r'^$', pag_inicial_view, name="home"),
@@ -13,6 +13,7 @@ urlpatterns = patterns('',
     url(r'^cursos/(?P<selected_page>\d+)/?$', cursos_view),
     url(r'^curso/(?P<cursoSlug>[-a-zA-Z0-9]+)/?$', getCurso_view, name='curso_item'),
     url(r'^contato/', contato_view, name="contato"),
+    url(r'^contato_efetuado/', thanks_view, name="contato_efetuado"),
     url(r'^admin/', include(admin.site.urls)),
 )
 
