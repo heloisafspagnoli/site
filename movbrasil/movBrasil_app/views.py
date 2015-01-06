@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from django.shortcuts import render, render_to_response, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.mail import send_mail
@@ -65,8 +67,8 @@ def getCurso_view(request, cursoSlug):
             #import pdb; pdb.set_trace()
             #send_mail(assunto, mensagem, email_de,[email_para, email_de])
             return HttpResponseRedirect('/contato_efetuado/')
-        else:
-            form = InscricaoForm()
+    else:
+        form = InscricaoForm()
     
     return render(request, 'curso_item.html',
                                 {

@@ -13,7 +13,7 @@ class ContatoForm(forms.Form):
                                     'required': "Por favor, digite seu e-mail"
                                 }
                             )
-    mensage= forms.TextField(widget=forms.Textarea,
+    mensage= forms.CharField(widget=forms.Textarea,
                                 label="Mensagem",
                                 error_messages={
                                     'required': "Por favor, escreva uma mensagem"
@@ -28,4 +28,4 @@ class InscricaoForm(forms.Form):
     formacao = forms.CharField(label="Formação")
     endereco = forms.CharField(label="Endereço")
     cidade = forms.CharField(label="Cidade")
-    duvidas = forms.TextField(label="Dúvidas")
+    duvidas = forms.CharField(label="Dúvidas")

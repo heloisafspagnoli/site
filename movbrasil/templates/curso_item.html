@@ -51,10 +51,12 @@
         <div class="row">
             <div class="row tab-v3">
 
-                <!--===Menu Part ===-->
+                <!--=== Início do menu lateral ===-->
                 <div class="col-sm-3">
                     <ul class="nav nav-pills nav-stacked">
-                        <li class="menu_curso active" id="menu_apresentacao"><a href="javascript:void(0);" data-toggle="tab"><i class="fa fa-desktop"></i> Apresentação</a></li>
+                        <li class="menu_curso active" id="menu_apresentacao">
+                            <a href="javascript:void(0);" data-toggle="tab"><i class="fa fa-desktop"></i> Apresentação</a>
+                        </li>
                         <li class="menu_curso" id="menu_palestrante">
                             <a href="javascript:void(0);" data-toggle="tab"><i class="fa fa-graduation-cap"></i>
                                 {% if  palestrantes|length > 1 %}
@@ -63,17 +65,20 @@
                                     Ministrante
                                 {% endif %}
                             </a></li>
-                        <li class="menu_curso" id="menu_programacao"><a href="javascript:void(0);" data-toggle="tab"><i class="fa  fa-book"></i>Programação</a></li>
-                        <li class="menu_curso" id="menu_inscricao"><a href="javascript:void(0);" data-toggle="tab"><i class="fa fa-pencil"></i> Inscrição</a></li>
+                        <li class="menu_curso" id="menu_programacao">
+                            <a href="javascript:void(0);" data-toggle="tab"><i class="fa  fa-book"></i>Programação</a>
+                        </li>
+                        <li class="menu_curso" id="menu_inscricao">
+                            <a href="javascript:void(0);" data-toggle="tab"><i class="fa fa-pencil"></i> Inscrição</a>
+                        </li>
                     </ul>
                 </div>
-                <!--=== End Menu Part ===-->
-
+                <!--=== Fim do menu lateral ===-->
 
                 <div class="col-md-9 md-margin-bottom-60 tab-content">
                     <div class="blog margin-bottom-40">
 
-                    <!--===Inicio Apresentacao ===-->
+                        <!--===Inicio Apresentacao ===-->
                         <div class="curso_dados" id="curso_apresentacao" style="display:block;">
                             <h2>{{ curso_item.titulo }}</h2>
                             <div class="blog-post-tags">
@@ -86,7 +91,6 @@
                                 <img class="img-responsive" src="../{{curso_item.img.url}}" alt="">
                             </div>
                             <p>{{ curso_item.descricao }} </p>
-
                             <div id="material_incluso">
                                 <h5><b> Material Incluso </b></h5>
                                 <ul class="list-unstyled">
@@ -95,26 +99,24 @@
                                     {% endfor %}
                                 </ul>
                             </div>
-
                             <br>
-
                             <div class="shadow-wrapper">
-                            <div class="tag-box tag-box-v1 box-shadow shadow-effect-2">
-                                <h4> Local </h4>
-                                <p>{{ curso_item.local.nome }}</p>
-                                <p>{{ curso_item.local.endereco }}, {{ curso_item.local.numero }}
-                                        {% if curso_item.local.complemento %}
-                                            , {{ curso_item.local.complemento }}
-                                        {% endif %}
-                                </p>
-                                <p>{{ curso_item.local.bairro }}</p>
-                                <p>{{ curso_item.local.cidade }} - {{ curso_item.local.estado }}</p>
+                                <div class="tag-box tag-box-v1 box-shadow shadow-effect-2">
+                                    <h4> Local </h4>
+                                    <p>{{ curso_item.local.nome }}</p>
+                                    <p>{{ curso_item.local.endereco }}, {{ curso_item.local.numero }}
+                                            {% if curso_item.local.complemento %}
+                                                , {{ curso_item.local.complemento }}
+                                            {% endif %}
+                                    </p>
+                                    <p>{{ curso_item.local.bairro }}</p>
+                                    <p>{{ curso_item.local.cidade }} - {{ curso_item.local.estado }}</p>
+                                </div>
                             </div>
                         </div>
-                        </div>
-                    <!--===Fim Apresentacao ===-->
+                        <!--===Fim Apresentacao ===-->
 
-                    <!--===Inicio Programação ===-->
+                        <!--===Inicio Programação ===-->
                         <div class="curso_dados" id="curso_programacao" style="display:none;">
                             <h2> Programação </h2>
                             {% for programa_dia in programacao %}
@@ -134,9 +136,9 @@
                                 </div>
                             {% endfor %}
                         </div>
-                    <!--===Fim Programação ===-->
+                        <!--===Fim Programação ===-->
 
-                     <!--===Inicio Palestrante ===-->
+                        <!--===Inicio Palestrante ===-->
                         <div class="curso_dados profile" id="curso_palestrante" style="display:none">
                             <h2>
                                 {% if  palestrantes|length > 1 %}
@@ -160,9 +162,9 @@
                                 </div>
                             {% endfor %}
                         </div>
-                    <!--===Fim Palestrante ===-->
+                        <!--===Fim Palestrante ===-->
 
-                    <!--===Inicio Inscrição ===-->
+                        <!--===Inicio Inscrição ===-->
                         <div class="curso_dados" id="curso_inscricao" style="display:none">
                             <h2> Inscrições </h2>
                             <p> Para realizar sua inscrição e pagamento, disponibilizamos duas maneiras. Uma via transferência/depósito bancário, ou então via cartão de crédito pelo PagSeguro. </p>
@@ -170,28 +172,36 @@
                             <h5><b> Investimento:</b> {{curso_item.preco}} </h5>
                             <br>
 
+                            <div class="panel-group acc-v1" id="accordion-1">
 
-                            <div class="col-md-14">
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h3 class="panel-title"><i class="fa-pencil-square-o"></i> Via Formulário</h3>
-                                        </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-1" href="#collapse-One">
+                                                <i class="fa-pencil-square-o"> </i>
+                                                Via Formulário
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse-One" class="panel-collapse collapse in">
                                         <div class="panel-body">
-                                        <p>Para realizar sua inscrição e pagamento, disponibilizamos duas maneiras. Uma via transferência/depósito bancário, ou então via cartão de crédito pelo PagSeguro. </p>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.</p>
 
-                                        {% if form.errors %}
-                                            <div class="alert alert-danger fade in">
-                                                <strong> Erro! </strong>
-                                                <ul>
-                                                    {% for field in form %}
-                                                    {% if field.errors %} <li>{{field.label}} - {{ field.errors|striptags }}</li>{% endif %}
-                                                    {% endfor %}
-                                                </ul>
-                                                </div>
-                                            {% endif %}
+                                                     {% if form.errors %}
+                                                        <div class="alert alert-danger fade in">
+                                                            <strong> Erro! </strong>
+                                                            <ul>
+                                                                {% for field in form %}
+                                                                    {% if field.errors %} <li>{{field.label}} - {{ field.errors|striptags }}</li>{% endif %}
+                                                                {% endfor %}
+                                                            </ul>
+                                                        </div>
+                                                    {% endif %}
 
-                                                <form action="" id="sky-form1" method="post">
-                                                    {% csrf_token %}
+                                                    <form action="" id="sky-form1" method="post">
+                                                        {% csrf_token %}
 
                                                         {% for field in form %}
 
@@ -221,47 +231,57 @@
                                                                     </div>
                                                                 </div>
                                                             {% endif %}
+
                                                         {%endfor%}
                                                         <p><button type="submit" class="btn-u" id="enviar" value="Submit">Enviar</button></p>
                                                     </form>
-                                                </div><!--/col-md-9-->
-
-
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="col-md-14">
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h3 class="panel-title"><img src="{% static 'img/pagseguro2.png' %}" style="vertical-align: bottom; width: 30px;" /> Via PagSeguro</h3>
-                                        </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title" id="img_hover">
+                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-1" href="#collapse-Two">
+                                                <img  src="{% static 'img/pagseguro-grey.png' %}" class="inscricao_img" id="img_grey" style="display: block"/>
+                                                <img src="{% static 'img/pagseguro-color.png' %}" class="inscricao_img" id="img_color" style="display: none"/>
+                                                <div style="padding-left: 24px;"> Via PagSeguro </div>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse-Two" class="panel-collapse collapse">
                                         <div class="panel-body">
-                                        <p>Para realizar sua inscrição e pagamento, disponibilizamos duas maneiras. Uma via transferência/depósito bancário, ou então via cartão de crédito pelo PagSeguro. </p>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                         </div>
-                    <!--===Fim Inscrição ===-->
+                        <!--===Fim Inscrição ===-->
 
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
 {% endblock %}
 
 {% block js %}
-
-
     <script type="text/javascript" src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'plugins/jquery/jquery-migrate.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+
     <!-- JS Implementing Plugins -->
     <script type="text/javascript" src="{% static 'plugins/back-to-top.js' %}"></script>
+
     <!-- JS Customization -->
     <script type="text/javascript" src="{% static 'js/custom.js' %}"></script>
+
     <!-- JS Page Level -->
     <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
 
@@ -294,7 +314,17 @@
                         $("#menu_apresentacao").addClass("active");
                         $("#curso_apresentacao").css("display","block");
                 }
+
           });
+        });
+        $(document).ready(function(){
+            $("#img_hover").hover(function(){
+                $("#img_grey").css("display","none");
+                $("#img_color").css("display","block");
+                }, function() {
+                    $("#img_grey").css("display","block");
+                    $("#img_color").css("display","none");
+                });
         });
     </script>
 {% endblock %}
