@@ -59,6 +59,7 @@ def getCurso_view(request, cursoSlug):
     
     if request.method == 'POST':
         form = InscricaoForm(request.POST)
+        #import pdb; pdb.set_trace()
         if form.is_valid():
             cd = form.cleaned_data
             assunto = "Inscrição - " + curso_item.nome
@@ -88,7 +89,6 @@ def contato_view(request):
             email_de = cd.get('email')
             email_para = 'heloisafspagnoli@gmail.com'
             mensagem = cd['nome']+'\n'+ email_de+'\n\n'+cd['mensagem']
-            #import pdb; pdb.set_trace()
             #send_mail(assunto, mensagem, email_de,[email_para, email_de])
             return HttpResponseRedirect('/contato_efetuado/')
     else:
@@ -96,5 +96,5 @@ def contato_view(request):
     contato = endereco_contato_model.objects.first()
     return render(request, 'contato.html', {'contato': contato, 'form': form})
 
-def thanks_view(request):
-    return render(request, 'thanks.html')
+def contato_efetuado_view(request):
+    return render(request, 'contato_efetuado.html')
