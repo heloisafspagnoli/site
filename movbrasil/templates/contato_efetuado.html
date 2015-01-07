@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    <title> MovBrasil - Erro </title>
+{% endblock %}
+
+{% block add_css %}
+<!-- CSS Page Style -->
+    <link rel="stylesheet" href="{% static 'css/pages/page_404_error.css' %}">
+{% endblock %}
+
+{% block topbar %}
+<!-- Quem somos -->
+<li>
+    <a href="{% url 'quem_somos' %}">
+        Quem somos
+    </a>
+</li>
+<!-- End Home -->
+
+<!-- Cursos -->
+<li>
+    <a href="{% url 'cursos' %}" >
+        Cursos
+    </a>
+</li>
+<!-- End Cursos -->
+
+<!-- Loja Virtual -->
+<li>
+    <a href="javascript:void(0);">
+        Loja Virtual
+    </a>
+</li>
+<!-- End Loja Virtual -->
+
+<!-- Contato -->
+<li>
+    <a href="{% url 'contato' %}">
+        Contato
+    </a>
+</li>
+<!-- Ens Contato -->
+{% endblock %}
+
+{% block content %}
+
+ <!--=== Content Part ===-->
+    <div class="container content" style=" padding-top: 80px; padding-bottom: 80px;">
+        <!--Error Block-->
+        <div class="row" style="margin-top: 50px; margin-bottom: 50px;">
+            <div class="col-md-8 col-md-offset-2">
+                <div id="msg_enviada">
+                    <i class="fa fa-paper-plane-o fa-5x"></i>
+                    <span>Mensagem enviada!</span>
+                    <p>
+                        Sua mensagem foi enviada com cópia para o e-mail informado.
+                        <br>
+                        Entraremos em contato em breve.
+                    </p>
+                    <a class="btn-u btn-bordered" href="{% url 'home' %}">Voltar à página inicial</a>
+                </div>
+            </div>
+        </div>
+        <!--End Error Block-->
+    </div>
+    <!--=== End Content Part ===-->
+
+{% endblock %}

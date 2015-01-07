@@ -187,56 +187,45 @@
                                         <div class="panel-body">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.</p>
-
-                                                     {% if form.errors %}
-                                                        <div class="alert alert-danger fade in">
-                                                            <strong> Erro! </strong>
-                                                            <ul>
-                                                                {% for field in form %}
-                                                                    {% if field.errors %} <li>{{field.label}} - {{ field.errors|striptags }}</li>{% endif %}
-                                                                {% endfor %}
-                                                            </ul>
-                                                        </div>
-                                                    {% endif %}
-
-                                                    <form action="" id="sky-form1" method="post">
-                                                        {% csrf_token %}
-
-                                                        {% for field in form %}
-
-                                                            {% if field.label == 'Nome' %}
-                                                                <label>{{field.label}}</label>
-                                                                <div class="row margin-bottom-20">
-                                                                    <div class="col-md-7 col-md-offset-0">
-                                                                        {{ field }}
-                                                                    </div>
-                                                                </div>
-                                                            {% endif %}
-
-                                                            {% if field.label == 'E-mail' %}
-                                                                <label>{{field.label}}</label>
-                                                                <div class="row margin-bottom-20">
-                                                                    <div class="col-md-7 col-md-offset-0">
-                                                                        {{ field }}
-                                                                    </div>
-                                                                </div>
-                                                            {% endif %}
-
-                                                            {% if field.label == 'Mensagem' %}
-                                                                <label>{{field.label}}</label>
-                                                                <div class="row margin-bottom-20">
-                                                                    <div class="col-md-11 col-md-offset-0">
-                                                                        {{ field }}
-                                                                    </div>
-                                                                </div>
-                                                            {% endif %}
-
-                                                        {%endfor%}
-                                                        <p><button type="submit" class="btn-u" id="enviar" value="Submit">Enviar</button></p>
-                                                    </form>
+                                                    <p style="margin-bottom: 30px;">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.</p>
                                                 </div>
                                             </div>
+
+                                             {% if form.errors %}
+                                                <div class="alert alert-danger fade in">
+                                                    <strong> Erro! </strong>
+                                                    <ul>
+                                                        {% for field in form %}
+                                                            {% if field.errors %} <li>{{field.label}} - {{ field.errors|striptags }}</li>{% endif %}
+                                                        {% endfor %}
+                                                    </ul>
+                                                </div>
+                                            {% endif %}
+
+                                            <form action="" id="sky-form1" method="post">
+                                                {% csrf_token %}
+                                                {% for field in form %}
+                                                    <div class="float_curso">
+                                                        <label>{{field.label}}</label>
+                                                        <div class="row margin-bottom-20">
+                                                            <div class="col-md-7 col-md-offset-0">
+                                                                {{ field }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {%endfor%}
+
+                                                <div class="float_curso">
+                                                    <label>Dúvidas</label>
+                                                    <div class="row margin-bottom-20">
+                                                        <div class="col-md-7 col-md-offset-0">
+                                                            <textarea id="id_duvidas" rows='6'></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="float_curso"><button type="submit" class="btn-u" id="enviar" value="Submit">Enviar</button></div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
