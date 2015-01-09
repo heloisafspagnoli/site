@@ -129,7 +129,7 @@ class curso_model(models.Model):
     titulo = models.CharField(max_length=254)
     data = models.DateField()
     img = models.ImageField()
-    resumo = models.TextField(max_length=400)
+    tema = models.CharField(max_length=254)
     descricao = models.TextField()
     carga_horaria = models.CharField(max_length=100)
     publico = models.CharField(max_length=100)

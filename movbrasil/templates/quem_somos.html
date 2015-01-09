@@ -6,14 +6,6 @@
 {% endblock %}
 
 {% block topbar %}
-<!-- Quem somos -->
-<li class="dropdown active">
-    <a href="{% url 'quem_somos' %}">
-        Quem somos
-    </a>
-</li>
-<!-- End Home -->
-
 <!-- Cursos -->
 <li>
     <a href="{% url 'cursos' %}" >
@@ -21,6 +13,14 @@
     </a>
 </li>
 <!-- End Cursos -->
+
+<!-- Quem somos -->
+<li class="dropdown active">
+    <a href="{% url 'quem_somos' %}">
+        Quem somos
+    </a>
+</li>
+<!-- End Quem Somos -->
 
 <!-- Loja Virtual -->
 <li>
