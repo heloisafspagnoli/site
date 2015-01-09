@@ -12,7 +12,7 @@ from models import chamada_model, parceiros_model, quem_somos_model,\
                    material_incluso_model
 
 def pag_inicial_view(request):
-    chamada = chamada_model.objects.first().chamada
+    chamada = chamada_model.objects.first()
     cursos = curso_model.objects.filter(ativo=True)
     cursos = cursos.order_by('data')
     cursos = cursos[:4]
@@ -23,9 +23,14 @@ def pag_inicial_view(request):
 
 def quem_somos_view(request):
     descricao = quem_somos_model.objects.first().descricao
+    imgs = quem_somos_model.objects.first().img
+    imgs = imgs.all()
+    first_img = imgs.first()
+    num_imagens = len(imgs) - 1
     time_mvb = equipe_model.objects.all()
     return render(request, 'quem_somos.html', 
-                    {'descricao': descricao, 'time_mvb': time_mvb})
+                    {'descricao': descricao, 'time_mvb': time_mvb, 'imgs': imgs,
+                        'first_img': first_img, 'num_imagens': range(num_imagens)})
 
 def cursos_view(request):
     cursos = curso_model.objects.filter(ativo=True)
@@ -59,14 +64,18 @@ def getCurso_view(request, cursoSlug):
     
     if request.method == 'POST':
         form = InscricaoForm(request.POST)
-        #import pdb; pdb.set_trace()
         if form.is_valid():
             cd = form.cleaned_data
-            assunto = "Inscrição - " + curso_item.nome
+            assunto = u"Inscrição - " + curso_item.titulo
             email_de = cd.get('email')
             email_para = 'heloisafspagnoli@gmail.com'
-            #import pdb; pdb.set_trace()
-            #send_mail(assunto, mensagem, email_de,[email_para, email_de])
+            duvidas = request.POST['duvidas']
+            mensagem = cd['nome'] + " - " + cd['cpf'] + "\n" + \
+                       cd['telefone'] + "\n" + cd['email'] + "\n\n" + \
+                       cd['endereco'] + ", " + cd['nro_comp'] + "\n" + \
+                       cd['bairro'] + "  " + cd['cidade'] + "\n\n" + \
+                       cd['formacao'] + "\n\n" + duvidas
+            send_mail(assunto, mensagem, email_de,[email_para, email_de])
             return HttpResponseRedirect('/contato_efetuado/')
     else:
         form = InscricaoForm()
@@ -89,7 +98,7 @@ def contato_view(request):
             email_de = cd.get('email')
             email_para = 'heloisafspagnoli@gmail.com'
             mensagem = cd['nome']+'\n'+ email_de+'\n\n'+cd['mensagem']
-            #send_mail(assunto, mensagem, email_de,[email_para, email_de])
+            send_mail(assunto, mensagem, email_de,[email_para, email_de])
             return HttpResponseRedirect('/contato_efetuado/')
     else:
         form = ContatoForm()

@@ -49,67 +49,77 @@
     <div class="container content">
         <div class="row margin-bottom-30">
             <div class="col-md-9 mb-margin-bottom-30">
-                <div class="headline"><h2>Formulário para contato</h2></div>
-                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas feugiat. Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, consectetur adipiscing elit landitiis.</p><br />
+                <div id="form_contato">
+                    <div class="headline"><h2>Formulário para contato</h2></div>
+                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas feugiat. Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, consectetur adipiscing elit landitiis.</p><br />
 
-                    {% if form.errors %}
-                    <div class="alert alert-danger fade in">
-                        <strong> Erro! </strong>
-                        <ul>
-                            {% for field in form %}
-                            {% if field.errors %} <li>{{field.label}} - {{ field.errors|striptags }}</li>{% endif %}
-                            {% endfor %}
-                        </ul>
-                        </div>
-                    {% endif %}
-
-                        <form action="" id="sky-form1" method="post">
-                            {% csrf_token %}
-
+                        {% if form.errors %}
+                        <div class="alert alert-danger fade in">
+                            <strong> Erro! </strong>
+                            <ul>
                                 {% for field in form %}
+                                {% if field.errors %} <li>{{field.label}} - {{ field.errors|striptags }}</li>{% endif %}
+                                {% endfor %}
+                            </ul>
+                            </div>
+                        {% endif %}
 
-                                    {% if field.label == 'Nome' %}
-                                        <label>{{field.label}}</label>
-                                        <div class="row margin-bottom-20">
-                                            <div class="col-md-7 col-md-offset-0">
-                                                {{ field }}
+                            <form action="" id="sky-form1" method="post">
+                                {% csrf_token %}
+
+                                    {% for field in form %}
+
+                                        {% if field.label == 'Nome' %}
+                                            <label>{{field.label}}</label>
+                                            <div class="row margin-bottom-20">
+                                                <div class="col-md-7 col-md-offset-0">
+                                                    {{ field }}
+                                                </div>
                                             </div>
-                                        </div>
-                                    {% endif %}
+                                        {% endif %}
 
 
 
-                                    {% if field.label == 'E-mail' %}
-                                        <label>{{field.label}}</label>
-                                        <div class="row margin-bottom-20">
-                                            <div class="col-md-7 col-md-offset-0">
-                                                {{ field }}
+                                        {% if field.label == 'E-mail' %}
+                                            <label>{{field.label}}</label>
+                                            <div class="row margin-bottom-20">
+                                                <div class="col-md-7 col-md-offset-0">
+                                                    {{ field }}
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <label>Assunto</label>
-                                        <div class="row margin-bottom-20">
-                                            <div class="col-md-3 col-md-offset-0">
-                                                <select class="form-control" name="assunto">
-                                                    {% for assunto in contato.assuntos|text2list %}
-                                                        <option>{{assunto}}</option>
-                                                    {% endfor %}
-                                                </select>
+                                            <label>Assunto</label>
+                                            <div class="row margin-bottom-20">
+                                                <div class="col-md-3 col-md-offset-0">
+                                                    <select class="form-control" name="assunto">
+                                                        {% for assunto in contato.assuntos|text2list %}
+                                                            <option>{{assunto}}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
                                             </div>
-                                        </div>
-                                    {% endif %}
+                                        {% endif %}
 
-                                    {% if field.label == 'Mensagem' %}
-                                        <label>{{field.label}}</label>
-                                        <div class="row margin-bottom-20">
-                                            <div class="col-md-11 col-md-offset-0">
-                                                {{ field }}
+                                        {% if field.label == 'Mensagem' %}
+                                            <label>{{field.label}}</label>
+                                            <div class="row margin-bottom-20">
+                                                <div class="col-md-11 col-md-offset-0">
+                                                    {{ field }}
+                                                </div>
                                             </div>
-                                        </div>
-                                    {% endif %}
-                                {%endfor%}
-                                <p><button type="submit" class="btn-u" id="enviar" value="Submit">Enviar</button></p>
-                            </form>
+                                        {% endif %}
+                                    {%endfor%}
+                                    <p><button type="submit" class="btn-u" id="enviar" value="Submit">Enviar</button></p>
+                                </form>
+                            </div>
+                            <div id="processing" style="display:none;">
+                                <div class="col-md-12" style="text-align: center; font-size: 18px; margin-top: 65px; margin-bottom:300px ">
+                                    <i class="fa-li fa fa-spinner fa-spin" style="margin-left: 230px; "></i>
+                                    <p>
+                                        Aguarde! Sua mensagem esta sendo enviada...
+                                    </p>
+                                </div>
+                            </div>
                         </div><!--/col-md-9-->
 
             <div class="col-md-3">
@@ -159,8 +169,10 @@
         });
 
         $(document).ready(function(){
-          $("#enviar" ).click(function(){
+            $("#enviar").click(function(){
+                $("#form_contato").css("display","none");
+                $("#processing").css("display","block");
+            });
         });
-    });
   </script>
 {% endblock%}
