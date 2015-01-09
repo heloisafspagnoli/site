@@ -9,6 +9,7 @@
  {% block add_css %}
     <link rel="stylesheet" href="{% static 'css/pages/blog.css' %}">
     <link rel="stylesheet" href="{% static 'css/pages/profile.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/sky-forms/version-2.0.1/css/custom-sky-forms.css' %}">
 {% endblock %}
 
 {% block topbar %}
@@ -183,49 +184,68 @@
                                             </a>
                                         </h4>
                                     </div>
-                                    <div id="collapse-One" class="panel-collapse collapse in">
-                                        <div class="panel-body">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <p style="margin-bottom: 30px;">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.</p>
-                                                </div>
-                                            </div>
 
-                                             {% if form.errors %}
-                                                <div class="alert alert-danger fade in">
-                                                    <strong> Erro! </strong>
-                                                    <ul>
-                                                        {% for field in form %}
-                                                            {% if field.errors %} <li>{{field.label}} - {{ field.errors|striptags }}</li>{% endif %}
-                                                        {% endfor %}
-                                                    </ul>
+                                    <div id="form1">
+                                        <div id="collapse-One" class="panel-collapse collapse in">
+                                            <div class="panel-body">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <p style="margin-bottom: 30px;">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.</p>
+                                                    </div>
                                                 </div>
-                                            {% endif %}
 
-                                            <form action="" id="sky-form1" method="post">
-                                                {% csrf_token %}
-                                                {% for field in form %}
+                                                 {% if form.errors %}
+                                                    <div class="alert alert-danger fade in">
+                                                        <strong> Erro! </strong>
+                                                        <ul>
+                                                            {% for field in form %}
+                                                                {% if field.errors %} <li>{{field.label}} - {{ field.errors|striptags }}</li>{% endif %}
+                                                            {% endfor %}
+                                                        </ul>
+                                                    </div>
+                                                {% endif %}
+
+                                                <form action="" id="sky-form1" method="post">
+                                                    {% csrf_token %}
+                                                    {% for field in form %}
+                                                        <div class="float_curso">
+                                                            <label>{{field.label}}</label>
+                                                            <div class="row margin-bottom-20">
+                                                                <div class="col-md-7 col-md-offset-0">
+                                                                    {{ field }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {%endfor%}
+
                                                     <div class="float_curso">
-                                                        <label>{{field.label}}</label>
+                                                        <label>Dúvidas</label>
                                                         <div class="row margin-bottom-20">
                                                             <div class="col-md-7 col-md-offset-0">
-                                                                {{ field }}
+                                                                <textarea id="id_duvidas" rows='6' name="duvidas" type="text"></textarea>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                {%endfor%}
 
-                                                <div class="float_curso">
-                                                    <label>Dúvidas</label>
-                                                    <div class="row margin-bottom-20">
-                                                        <div class="col-md-7 col-md-offset-0">
-                                                            <textarea id="id_duvidas" rows='6'></textarea>
+                                                    <div class="float_curso"><button type="submit" class="btn-u" id="enviar_form1" value="Submit">Enviar</button></div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="processing" style="display:none">
+                                        <div id="collapse-One" class="panel-collapse collapse in">
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="col-md-12" style="text-align: center; font-size: 18px; ">
+                                                            <i class="fa-li fa fa-spinner fa-spin" style="margin-left:240px;"></i>
+                                                            <p>
+                                                                Aguarde! Sua mensagem esta sendo enviada...
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 </div>
-
-                                                <div class="float_curso"><button type="submit" class="btn-u" id="enviar" value="Submit">Enviar</button></div>
-                                            </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -274,12 +294,35 @@
     <!-- JS Page Level -->
     <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
 
+    <!-- Validation Form -->
+    <script src="{% static 'plugins/sky-forms/version-2.0.1/js/jquery.validate.min.js' %}"></script>
+
+
     <script type="text/javascript">
         jQuery(document).ready(function() {
             App.init();
+            Validation.initValidation();
+
+            {% if form.errors %}
+                {% for field in form %}
+                    {% if field.errors %}
+                         var field_id = "#{{field.auto_id}}"
+                        $(field_id).css("background", "#fff0f0");
+                    {% endif %}
+               {% endfor %}
+            {% endif %}
+
         });
 
         $(document).ready(function(){
+
+            if($(".alert-danger").length > 0){
+                $(".menu_curso").removeClass("active")
+                $("#curso_apresentacao").hide();
+                $("#menu_inscricao").addClass("active");
+                $("#curso_inscricao").show();
+            };
+
           $(".menu_curso").click(function(){
                 $(".menu_curso").removeClass("active");
                 $(".curso_dados").hide();
@@ -305,15 +348,21 @@
                 }
 
           });
-        });
-        $(document).ready(function(){
+
             $("#img_hover").hover(function(){
                 $("#img_grey").css("display","none");
                 $("#img_color").css("display","block");
-                }, function() {
+                }, function(){
                     $("#img_grey").css("display","block");
                     $("#img_color").css("display","none");
-                });
+            });
+
+            $("#enviar_form1").click(function(){
+                $("#form1").css("display","none");
+                $("#processing").css("display","block");
+            });
+
         });
+
     </script>
 {% endblock %}

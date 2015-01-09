@@ -77,8 +77,16 @@ h1, h2, h3, h4, h5, h6, p, small, a, span, body {
 }
 
 #sky-form1 #id_email + em,
-#sky-form1 #id_nome + em {
+#sky-form1 #id_nome + em,
+#sky-form1 #id_cpf + em,
+#sky-form1 #id_telefone + em,
+#sky-form1 #id_endereco + em,
+#sky-form1 #id_nro_comp + em,
+#sky-form1 #id_bairro + em,
+#sky-form1 #id_cidade + em,
+#sky-form1 #id_formacao + em {
     display: block;
+    width: 230px;
     margin-top: 6px;
     padding: 0 1px;
     font-style: normal;
@@ -125,6 +133,10 @@ h1, h2, h3, h4, h5, h6, p, small, a, span, body {
 }
 
 #id_endereco{
+    width: 370px;
+}
+
+#id_bairro {
     width: 370px;
 }
 

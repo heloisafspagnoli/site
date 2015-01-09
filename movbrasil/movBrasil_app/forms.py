@@ -26,5 +26,7 @@ class InscricaoForm(forms.Form):
     email = forms.EmailField(label="E-mail")
     telefone = forms.CharField(label="Telefone")
     endereco = forms.CharField(label="Endereço")
+    nro_comp = forms.CharField(label="Número/Complemento")
+    bairro = forms.CharField(label="Bairro")
     cidade = forms.CharField(label="Cidade")
     formacao = forms.CharField(label="Formação")
