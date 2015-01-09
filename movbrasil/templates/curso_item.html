@@ -13,14 +13,6 @@
 {% endblock %}
 
 {% block topbar %}
-<!-- Quem somos -->
-<li>
-    <a href="{% url 'quem_somos' %}">
-        Quem somos
-    </a>
-</li>
-<!-- End Home -->
-
 <!-- Cursos -->
 <li class="dropdown active">
     <a href="{% url 'cursos' %}" >
@@ -28,6 +20,14 @@
     </a>
 </li>
 <!-- End Cursos -->
+
+<!-- Quem somos -->
+<li>
+    <a href="{% url 'quem_somos' %}">
+        Quem somos
+    </a>
+</li>
+<!-- End Quem Somos -->
 
 <!-- Loja Virtual -->
 <li>
@@ -48,11 +48,23 @@
 
 
 {% block content%}
+    <div class="breadcrumbs">
+        <div class="container">
+            <h1 class="pull-left">{{ curso_item.titulo }}</h1>
+            <ul class="pull-right breadcrumb">
+                <li><a href="{% url 'home' %}" >Principal</a></li>
+                <li><a href="{% url 'cursos' %}" >Cursos</a></li>
+                <li class="active">{{ curso_item.titulo }}</li>
+            </ul>
+        </div><!--/container-->
+    </div><!--/end breadcrumbs-->
+
     <div class="container content">
         <div class="row">
             <div class="row tab-v3">
 
                 <!--=== Início do menu lateral ===-->
+                 <!--
                 <div class="col-sm-3">
                     <ul class="nav nav-pills nav-stacked">
                         <li class="menu_curso active" id="menu_apresentacao">
@@ -73,18 +85,19 @@
                             <a href="javascript:void(0);" data-toggle="tab"><i class="fa fa-pencil"></i> Inscrição</a>
                         </li>
                     </ul>
-                </div>
+                </div> -->
                 <!--=== Fim do menu lateral ===-->
 
-                <div class="col-md-9 md-margin-bottom-60 tab-content">
+                <div class="col-md-12 md-margin-bottom-60 tab-content">
                     <div class="blog margin-bottom-40">
 
                         <!--===Inicio Apresentacao ===-->
-                        <div class="curso_dados" id="curso_apresentacao" style="display:block;">
-                            <h2>{{ curso_item.titulo }}</h2>
+                        <div class="curso_dados" id="curso_apresentacao" >
+                            <h2>Apresentação</h2>
                             <div class="blog-post-tags">
                                 <ul class="list-unstyled list-inline blog-info">
                                     <li><i class="fa fa-calendar"></i> {{curso_item.data }}</li>
+                                    <li><i class="fa fa-map-marker"></i> {{ curso_item.local.cidade }} - {{ curso_item.local.estado }} </li>
                                     <li><i class="fa fa-dot-circle-o"></i> {{curso_item.publico }} </li>
                                 </ul>
                             </div>
@@ -101,25 +114,12 @@
                                 </ul>
                             </div>
                             <br>
-                            <div class="shadow-wrapper">
-                                <div class="tag-box tag-box-v1 box-shadow shadow-effect-2">
-                                    <h4> Local </h4>
-                                    <p>{{ curso_item.local.nome }}</p>
-                                    <p>{{ curso_item.local.endereco }}, {{ curso_item.local.numero }}
-                                            {% if curso_item.local.complemento %}
-                                                , {{ curso_item.local.complemento }}
-                                            {% endif %}
-                                    </p>
-                                    <p>{{ curso_item.local.bairro }}</p>
-                                    <p>{{ curso_item.local.cidade }} - {{ curso_item.local.estado }}</p>
-                                </div>
-                            </div>
                         </div>
                         <!--===Fim Apresentacao ===-->
 
                         <!--===Inicio Programação ===-->
-                        <div class="curso_dados" id="curso_programacao" style="display:none;">
-                            <h2> Programação </h2>
+                        <div class="curso_dados" id="curso_programacao" >
+                            <h2 style="border-bottom: solid 1px #eee; height: 40px;"> Programação </h2>
                             {% for programa_dia in programacao %}
                                 <div class="col-md-14">
                                     <div class="panel panel-default">
@@ -140,21 +140,22 @@
                         <!--===Fim Programação ===-->
 
                         <!--===Inicio Palestrante ===-->
-                        <div class="curso_dados profile" id="curso_palestrante" style="display:none">
-                            <h2>
+                        <div class="curso_dados profile" id="curso_palestrante">
+                            <h2 style="border-bottom: solid 1px #eee; height: 40px;">
                                 {% if  palestrantes|length > 1 %}
                                     Ministrantes
                                 {% else %}
                                     Ministrante
                                 {% endif %}
+                            <hr>
                             </h2>
                             {% for palestrante in palestrantes %}
-                                <div class="profile-bio">
+                                <div class="profile-bio" style="border: solid 1px #eee">
                                     <div class="row">
-                                        <div class="col-md-5">
+                                        <div class="col-md-2">
                                             <img class="img-responsive md-margin-bottom-10" src="../{{palestrante.foto.url}}"  alt="">
                                         </div>
-                                        <div class="col-md-7">
+                                        <div class="col-md-10">
                                             <h2>{{palestrante.nome}}</h2>
                                             <hr>
                                             <p>{{palestrante.resumo}}</p>
@@ -166,8 +167,8 @@
                         <!--===Fim Palestrante ===-->
 
                         <!--===Inicio Inscrição ===-->
-                        <div class="curso_dados" id="curso_inscricao" style="display:none">
-                            <h2> Inscrições </h2>
+                        <div class="curso_dados" id="curso_inscricao" >
+                            <h2 style="border-bottom: solid 1px #eee; height: 40px;" > Inscrições </h2>
                             <p> Para realizar sua inscrição e pagamento, disponibilizamos duas maneiras. Uma via transferência/depósito bancário, ou então via cartão de crédito pelo PagSeguro. </p>
                             <br>
                             <h5><b> Investimento:</b> {{curso_item.preco}} </h5>
@@ -186,69 +187,71 @@
                                     </div>
 
                                     <div id="form1">
-                                        <div id="collapse-One" class="panel-collapse collapse in">
+                                        <div id="collapse-One" class="panel-collapse collapse">
                                             <div class="panel-body">
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <p style="margin-bottom: 30px;">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.</p>
                                                     </div>
                                                 </div>
+                                                <div class="col-md-9" style="left: 125px;">
+                                                     {% if form.errors %}
+                                                        <div class="alert alert-danger fade in">
+                                                            <strong> Erro! </strong>
+                                                            <ul>
+                                                                {% for field in form %}
+                                                                    {% if field.errors %} <li>{{field.label}} - {{ field.errors|striptags }}</li>{% endif %}
+                                                                {% endfor %}
+                                                            </ul>
+                                                        </div>
+                                                    {% endif %}
 
-                                                 {% if form.errors %}
-                                                    <div class="alert alert-danger fade in">
-                                                        <strong> Erro! </strong>
-                                                        <ul>
-                                                            {% for field in form %}
-                                                                {% if field.errors %} <li>{{field.label}} - {{ field.errors|striptags }}</li>{% endif %}
-                                                            {% endfor %}
-                                                        </ul>
-                                                    </div>
-                                                {% endif %}
+                                                    <form action="" id="sky-form1" method="post">
+                                                        {% csrf_token %}
+                                                        {% for field in form %}
+                                                            <div class="float_curso">
+                                                                <label>{{field.label}}</label>
+                                                                <div class="row margin-bottom-20">
+                                                                    <div class="col-md-7 col-md-offset-0">
+                                                                        {{ field }}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {%endfor%}
 
-                                                <form action="" id="sky-form1" method="post">
-                                                    {% csrf_token %}
-                                                    {% for field in form %}
                                                         <div class="float_curso">
-                                                            <label>{{field.label}}</label>
+                                                            <label>Dúvidas</label>
                                                             <div class="row margin-bottom-20">
                                                                 <div class="col-md-7 col-md-offset-0">
-                                                                    {{ field }}
+                                                                    <textarea id="id_duvidas" rows='6' name="duvidas" type="text"></textarea>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    {%endfor%}
 
-                                                    <div class="float_curso">
-                                                        <label>Dúvidas</label>
-                                                        <div class="row margin-bottom-20">
-                                                            <div class="col-md-7 col-md-offset-0">
-                                                                <textarea id="id_duvidas" rows='6' name="duvidas" type="text"></textarea>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="float_curso"><button type="submit" class="btn-u" id="enviar_form1" value="Submit">Enviar</button></div>
-                                                </form>
+                                                        <div class="float_curso"><button type="submit" class="btn-u" id="enviar_form1" value="Submit">Enviar</button></div>
+                                                    </form>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div id="processing" style="display:none">
-                                        <div id="collapse-One" class="panel-collapse collapse in">
-                                                <div class="panel-body">
-                                                    <div class="row">
-                                                        <div class="col-md-12" style="text-align: center; font-size: 18px; ">
-                                                            <i class="fa-li fa fa-spinner fa-spin" style="margin-left:240px;"></i>
-                                                            <p>
-                                                                Aguarde! Sua mensagem esta sendo enviada...
-                                                            </p>
+                                    <div id="form2">
+                                        <div id="processing" style="display:none">
+                                            <div id="collapse-One" class="panel-collapse collapse in">
+                                                    <div class="panel-body">
+                                                        <div class="row">
+                                                            <div class="col-md-12" style="text-align: center; font-size: 18px; ">
+                                                                <i class="fa-li fa fa-spinner fa-spin" style="margin-left:240px;"></i>
+                                                                <p>
+                                                                    Aguarde! Sua mensagem esta sendo enviada...
+                                                                </p>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
@@ -272,6 +275,24 @@
                             </div>
                         </div>
                         <!--===Fim Inscrição ===-->
+
+                        <!--===Inicio Local ===-->
+                         <div class="curso_dados" id="curso_local">
+                            <h2 style="border-bottom: solid 1px #eee; height: 40px;"> Local </h2>
+                             <div class="shadow-wrapper">
+                                    <div class="tag-box tag-box-v1 box-shadow shadow-effect-2" style="border-top: solid 1px #eee;">
+                                        <p>{{ curso_item.local.nome }}</p>
+                                        <p>{{ curso_item.local.endereco }}, {{ curso_item.local.numero }}
+                                                {% if curso_item.local.complemento %}
+                                                    , {{ curso_item.local.complemento }}
+                                                {% endif %}
+                                        </p>
+                                        <p>{{ curso_item.local.bairro }}</p>
+                                        <p>{{ curso_item.local.cidade }} - {{ curso_item.local.estado }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        <!--===Fim Local ===-->
 
                     </div>
                 </div>
