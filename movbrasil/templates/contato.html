@@ -11,41 +11,41 @@
 {% endblock %}
 
 {% block topbar %}
-<!-- Cursos -->
-<li>
-    <a href="{% url 'cursos' %}" >
-        Cursos
-    </a>
-</li>
-<!-- End Cursos -->
+    <!-- Cursos -->
+    <li>
+        <a href="{% url 'cursos' %}" >
+            Cursos
+        </a>
+    </li>
+    <!-- End Cursos -->
 
-<!-- Quem somos -->
-<li>
-    <a href="{% url 'quem_somos' %}">
-        Quem somos
-    </a>
-</li>
-<!-- End Quem somos -->
+    <!-- Quem somos -->
+    <li>
+        <a href="{% url 'quem_somos' %}">
+            Quem somos
+        </a>
+    </li>
+    <!-- End Quem somos -->
 
-<!-- Loja Virtual -->
-<li>
-    <a href="http://movbrasil.shopping.marketup.com/">
-        Loja Virtual
-    </a>
-</li>
-<!-- End Loja Virtual -->
+    <!-- Loja Virtual -->
+    <li>
+        <a href="http://movbrasil.shopping.marketup.com/">
+            Loja Virtual
+        </a>
+    </li>
+    <!-- End Loja Virtual -->
 
-<!-- Contato -->
-<li class="dropdown active">
-    <a href="{% url 'contato' %}">
-        Contato
-    </a>
-</li>
-<!-- Ens Contato -->
+    <!-- Contato -->
+    <li class="dropdown active">
+        <a href="{% url 'contato' %}">
+            Contato
+        </a>
+    </li>
+    <!-- End Contato -->
 {% endblock %}
 
 {% block content%}
-<!--=== Content Part ===-->
+    <!--=== Content Part ===-->
     <div class="container content">
         <div class="row margin-bottom-30">
             <div class="col-md-9 mb-margin-bottom-30">
@@ -139,17 +139,17 @@
     <script type="text/javascript" src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'plugins/jquery/jquery-migrate.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+
     <!-- JS Implementing Plugins -->
     <script type="text/javascript" src="{% static 'plugins/back-to-top.js' %}"></script>
-
 
     <!-- JS Page Level -->
     <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
 
     <!-- Validation Form -->
-<script src="{% static 'plugins/sky-forms/version-2.0.1/js/jquery.validate.min.js' %}"></script>
+    <script src="{% static 'plugins/sky-forms/version-2.0.1/js/jquery.validate.min.js' %}"></script>
 
-<!-- JS Customization -->
+    <!-- JS Customization -->
     <script type="text/javascript" src="{% static 'js/custom.js' %}"></script>
 
     <script type="text/javascript">
@@ -172,6 +172,7 @@
             $("#enviar").click(function(){
                 $("#form_contato").css("display","none");
                 $("#processing").css("display","block");
+                $('html,body').scrollTop(0);
             });
         });
   </script>

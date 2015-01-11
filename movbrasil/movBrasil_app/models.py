@@ -27,6 +27,9 @@ class parceiros_model(models.Model):
 
 class quem_somos_model(models.Model):
     descricao = models.TextField()
+    nossa_missao = models.TextField()
+    nossa_visao = models.TextField()
+    somos_bons = models.TextField()
     img = models.ImageField()
     
     def __str__(self):
@@ -38,6 +41,7 @@ class quem_somos_model(models.Model):
 
 class equipe_model(models.Model):
     nome = models.CharField(max_length=200)
+    cargo = models.CharField(max_length=100)
     resumo = models.TextField(max_length=300)
     tel = models.CharField(max_length=11)
     e_mail= models.EmailField()

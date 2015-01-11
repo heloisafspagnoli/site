@@ -6,47 +6,46 @@
 {% endblock %}
 
 {% block add_css %}
-<!-- CSS Page Style -->
     <link rel="stylesheet" href="{% static 'css/pages/page_404_error.css' %}">
 {% endblock %}
 
 {% block topbar %}
-<!-- Cursos -->
-<li>
-    <a href="{% url 'cursos' %}" >
-        Cursos
-    </a>
-</li>
-<!-- End Cursos -->
+    <!-- Cursos -->
+    <li>
+        <a href="{% url 'cursos' %}" >
+            Cursos
+        </a>
+    </li>
+    <!-- End Cursos -->
 
-<!-- Quem somos -->
-<li>
-    <a href="{% url 'quem_somos' %}">
-        Quem somos
-    </a>
-</li>
-<!-- End Quem somos -->
+    <!-- Quem somos -->
+    <li>
+        <a href="{% url 'quem_somos' %}">
+            Quem somos
+        </a>
+    </li>
+    <!-- End Quem somos -->
 
-<!-- Loja Virtual -->
-<li>
-    <a href="http://movbrasil.shopping.marketup.com/">
-        Loja Virtual
-    </a>
-</li>
-<!-- End Loja Virtual -->
+    <!-- Loja Virtual -->
+    <li>
+        <a href="http://movbrasil.shopping.marketup.com/">
+            Loja Virtual
+        </a>
+    </li>
+    <!-- End Loja Virtual -->
 
-<!-- Contato -->
-<li>
-    <a href="{% url 'contato' %}">
-        Contato
-    </a>
-</li>
-<!-- Ens Contato -->
+    <!-- Contato -->
+    <li>
+        <a href="{% url 'contato' %}">
+            Contato
+        </a>
+    </li>
+    <!-- End Contato -->
 {% endblock %}
 
 {% block content %}
 
- <!--=== Content Part ===-->
+    <!--=== Content Part ===-->
     <div class="container content" style=" padding-top: 80px; padding-bottom: 80px;">
         <!--Error Block-->
         <div class="row">

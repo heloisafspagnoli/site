@@ -10,48 +10,46 @@
 {% endblock %}
 
 {% block topbar %}
-<!-- Cursos -->
-<li>
-    <a href="{% url 'cursos' %}" >
-        Cursos
-    </a>
-</li>
-<!-- End Cursos -->
+    <!-- Cursos -->
+    <li>
+        <a href="{% url 'cursos' %}" >
+            Cursos
+        </a>
+    </li>
+    <!-- End Cursos -->
 
-<!-- Quem somos -->
-<li class="dropdown active">
-    <a href="{% url 'quem_somos' %}">
-        Quem somos
-    </a>
-</li>
-<!-- End Quem Somos -->
+    <!-- Quem somos -->
+    <li class="dropdown active">
+        <a href="{% url 'quem_somos' %}">
+            Quem somos
+        </a>
+    </li>
+    <!-- End Quem Somos -->
 
-<!-- Loja Virtual -->
-<li>
-    <a href="http://movbrasil.shopping.marketup.com/">
-        Loja Virtual
-    </a>
-</li>
-<!-- End Loja Virtual -->
+    <!-- Loja Virtual -->
+    <li>
+        <a href="http://movbrasil.shopping.marketup.com/">
+            Loja Virtual
+        </a>
+    </li>
+    <!-- End Loja Virtual -->
 
-<!-- Contato -->
-<li>
-    <a href="{% url 'contato' %}">
-        Contato
-    </a>
-</li>
-<!-- Ens Contato -->
+    <!-- Contato -->
+    <li>
+        <a href="{% url 'contato' %}">
+            Contato
+        </a>
+    </li>
+    <!-- End Contato -->
 {% endblock %}
 
 {% block content %}
-
-
-         <!--=== Parallax About Block ===-->
+    <!--=== Parallax About Block ===-->
     <div class="parallax-bg parallaxBg1">
         <div class="container content parallax-about">
             <div class="title-box-v2">
                 <h2 style="color:white">Sobre a<span> MovBrasil</span></h2>
-                <p style="color:white">{{ descricao}}</p>
+                <p style="color:white">{{ qms.descricao}}</p>
             </div>
 
             <div class="row">
@@ -59,71 +57,75 @@
                     <div class="banner-info light margin-bottom-10">
                         <i class="rounded-x icon-bell"></i>
                         <div class="overflow-h">
-                            <h3>Our mission</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tincidunt sit amet dui auctor pellentesque. Nulla ut posuere purus.</p>
+                            <h3>Nossa Missão</h3>
+                            <p>{{ qms.nossa_missao }}</p>
                         </div>
                     </div>
                     <div class="banner-info light margin-bottom-10">
                         <i class="rounded-x fa fa-magic"></i>
                         <div class="overflow-h">
-                            <h3>Our vision</h3>
-                            <p>Phasellus vitae rhoncus ipsum. Aliquam ultricies, velit sit amet scelerisque tincidunt, dolor neque consequat est, a dictum felis metus eget nulla.</p>
+                            <h3>Nossa Visão</h3>
+                            <p>{{ qms.nossa_visao }}</p>
                         </div>
                     </div>
                     <div class="banner-info light margin-bottom-10">
                         <i class="rounded-x fa fa-thumbs-o-up"></i>
                         <div class="overflow-h">
-                            <h3>We are good at ...</h3>
-                            <p>Nunc ac ligula ut diam rutrum porttitor. Integer et neque at lacus placerat pretium eu ac dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</p>
+                            <h3>Somos bons em ...</h3>
+                            <p>{{ qms.somos_bons }}</p>
                         </div>
                     </div>
                     <div class="margin-bottom-20"></div>
                 </div>
                 <div class="col-md-6">
-                    <img class="img-responsive" src="../{{img}}" alt="">
+                    <img class="img-responsive" src="../{{qms.img.url}}" alt="">
                 </div>
             </div>
-        </div><!--/container-->
+        </div>
     </div>
     <!--=== End Parallax About Block ===-->
 
- <!--=== Meet Our Team ===-->
     <div class="parallax-team parallaxBg">
+        <!--=== Nossa equipe ===-->
         <div class="container content">
             <div class="title-box-v2">
                 <h2>Nossa <span class="color-green">Equipe</span></h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </div>
 
             <div class="row">
-            {% for pessoa in time_mvb %}
-                <!-- Team v2 -->
-                <div class="col-md-3 col-sm-6">
-                    <div class="team-v2">
-                        <img class="img-responsive" src="../{{pessoa.foto.url}}" alt="" />
-                        <div class="inner-team">
-                            <h3>{{pessoa.nome}}</h3>
-                            <small class="color-green">CEO, Chief Officer</small>
-                            <p>{{ pessoa.resumo }}</p>
+                {% for pessoa in time_mvb %}
+                    <div class="col-md-3 col-sm-6">
+                        <div class="team-v2">
+                            <img class="img-responsive" src="../{{ pessoa.foto.url }}" alt="" />
+                            <div class="inner-team">
+                                <h3>{{ pessoa.nome }}</h3>
+                                <small class="color-green">{{ pessoa.cargo }}</small>
+                                <p>{{ pessoa.resumo }}</p>
+                                <hr>
+                                <ul class="list-unstyled qms_fa">
+                                    <li>
+                                        <i class="fa fa-envelope"></i>
+                                        {{ pessoa.e_mail }}
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-phone"></i>
+                                        {{ pessoa.tel }}
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
                 {% endfor %}
-                <!-- End Team v2 -->
-
             </div>
         </div>
+    <!--=== End Nossa equipe ===-->
 
-    <!--=== End Meet Our Team ===-->
-
-
-<!-- Nossos Ministrantes -->
-<div class="container content">
-     <div class="title-box-v2">
-                <h2>Nossos <span class="color-green">Ministrantes</span></h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            </div>
-            <div class="curso_dados curso_palestrante profile">
+    <!-- ===Nossos Ministrantes ===-->
+    <div class="container content">
+        <div class="title-box-v2">
+            <h2>Nossos <span class="color-green">Ministrantes</span></h2>
+        </div>
+        <div class="curso_dados curso_palestrante profile">
             {% for palestrante in palestrantes %}
                 <div class="profile-bio" style="border: solid 1px #eee">
                     <div class="row">
@@ -138,36 +140,44 @@
                     </div>
                 </div>
             {% endfor %}
-            </div>
         </div>
-        </div>
+    </div>
+    <!-- ===End Nossos Ministrantes ===-->
+</div>
 {% endblock %}
 
 {% block js %}
-<!-- JS Global Compulsory -->
-<script type="text/javascript" src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'plugins/jquery/jquery-migrate.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'plugins/bootstrap/js/bootstrap.min.js' %}"></script>
-<!-- JS Implementing Plugins -->
-<script type="text/javascript" src="{% static 'plugins/back-to-top.js' %}"></script>
-<script type="text/javascript" src="{% static 'plugins/flexslider/jquery.flexslider-min.js' %}"></script>
-<script type="text/javascript" src="{% static 'plugins/parallax-slider/js/modernizr.js' %}"></script>
-<script type="text/javascript" src="{% static 'plugins/parallax-slider/js/jquery.cslider.js' %}"></script>
-<!-- JS Customization -->
-<script type="text/javascript" src="{% static 'js/custom.js' %}"></script>
-<!-- JS Page Level -->
-<script type="text/javascript" src="{% static 'js/app.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/plugins/parallax-slider.js' %}"></script>
-<script type="text/javascript">
-    jQuery(document).ready(function() {
-        App.init();
-        App.initSliders();
-        ParallaxSlider.initParallaxSlider();
-    });
-</script>
-<!--[if lt IE 9]>
-    <script src="{% static 'plugins/respond.js' %}"></script>
-    <script src="{% static 'plugins/html5shiv.js' %}"></script>
-    <script src="{% static 'js/plugins/placeholder-IE-fixes.js' %}"></script>
-<![endif]-->
+
+    <!-- JS Global Compulsory -->
+    <script type="text/javascript" src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'plugins/jquery/jquery-migrate.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+
+    <!-- JS Implementing Plugins -->
+    <script type="text/javascript" src="{% static 'plugins/back-to-top.js' %}"></script>
+    <script type="text/javascript" src="{% static 'plugins/flexslider/jquery.flexslider-min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'plugins/parallax-slider/js/modernizr.js' %}"></script>
+    <script type="text/javascript" src="{% static 'plugins/parallax-slider/js/jquery.cslider.js' %}"></script>
+
+    <!-- JS Customization -->
+    <script type="text/javascript" src="{% static 'js/custom.js' %}"></script>
+
+    <!-- JS Page Level -->
+    <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/plugins/parallax-slider.js' %}"></script>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            App.init();
+            App.initSliders();
+            ParallaxSlider.initParallaxSlider();
+        });
+    </script>
+
+    <!--[if lt IE 9]>
+        <script src="{% static 'plugins/respond.js' %}"></script>
+        <script src="{% static 'plugins/html5shiv.js' %}"></script>
+        <script src="{% static 'js/plugins/placeholder-IE-fixes.js' %}"></script>
+    <![endif]-->
+
 {% endblock %}

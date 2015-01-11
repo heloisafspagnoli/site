@@ -41,15 +41,13 @@ def quem_somos_view(request):
     proximos_cursos = cursos[:3]
     contato = endereco_contato_model.objects.first() 
 
-    descricao = quem_somos_model.objects.first().descricao
-    img = quem_somos_model.objects.first().img
+    qms = quem_somos_model.objects.first()
     time_mvb = equipe_model.objects.all()
     palestrantes = palestrantes_model.objects.all()
     return render(request, 'quem_somos.html', 
                     {
-                        'chamada': chamada, 'proximos_cursos': proximos_cursos,  
-                        'contato': contato, 'descricao': descricao, 
-                        'time_mvb': time_mvb, 'img': img.url, 
+                        'chamada': chamada, 'proximos_cursos': proximos_cursos,
+                        'contato': contato, 'qms': qms, 'time_mvb': time_mvb, 
                         'palestrantes': palestrantes
                     }
                 )
