@@ -5,6 +5,10 @@
     <title> MovBrasil - Quem somos </title>
 {% endblock %}
 
+ {% block add_css %}
+    <link rel="stylesheet" href="{% static 'css/pages/profile.css' %}">
+{% endblock %}
+
 {% block topbar %}
 <!-- Cursos -->
 <li>
@@ -24,7 +28,7 @@
 
 <!-- Loja Virtual -->
 <li>
-    <a href="javascript:void(0);">
+    <a href="http://movbrasil.shopping.marketup.com/">
         Loja Virtual
     </a>
 </li>
@@ -40,80 +44,101 @@
 {% endblock %}
 
 {% block content %}
-<div class='container'>
-<!--=== Content Part ===-->
-    <div class="container content">
-        <div class="title-box-v2">
-            <h2>Sobre a<span class="color-green" style="text-transform: none"> MovBrasil</span></h2>
-            <p>{{ descricao}}</p>
-        </div>
 
-        <!-- About Sldier -->
-        <div class="shadow-wrapper margin-bottom-50">
-            <div class="carousel slide carousel-v1 box-shadow shadow-effect-2" id="myCarousel">
-                <ol class="carousel-indicators">
-                    <li class="rounded-x active" data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                    {% for i in num_imagens %}
-                        <li class="rounded-x" data-target="#myCarousel" data-slide-to="{{i}}"></li>
-                    {% endfor %}
-                </ol>
-                {{first_img.url}}
-                <div class="carousel-inner">
-                    <div class="item active">
-                        <img class="img-responsive" src="../{{ first_img.img.url }}" alt="">
+
+         <!--=== Parallax About Block ===-->
+    <div class="parallax-bg parallaxBg1">
+        <div class="container content parallax-about">
+            <div class="title-box-v2">
+                <h2 style="color:white">Sobre a<span> MovBrasil</span></h2>
+                <p style="color:white">{{ descricao}}</p>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="banner-info light margin-bottom-10">
+                        <i class="rounded-x icon-bell"></i>
+                        <div class="overflow-h">
+                            <h3>Our mission</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tincidunt sit amet dui auctor pellentesque. Nulla ut posuere purus.</p>
+                        </div>
                     </div>
-                    {% for img in imgs %}
-                        {% if img != first_img %}
-                            <div class="item">
-                                <img class="img-responsive" src="../{{ img.img.url }}" alt="">
-                            </div>
-                         {% endif %}
-                    {% endfor %}
+                    <div class="banner-info light margin-bottom-10">
+                        <i class="rounded-x fa fa-magic"></i>
+                        <div class="overflow-h">
+                            <h3>Our vision</h3>
+                            <p>Phasellus vitae rhoncus ipsum. Aliquam ultricies, velit sit amet scelerisque tincidunt, dolor neque consequat est, a dictum felis metus eget nulla.</p>
+                        </div>
+                    </div>
+                    <div class="banner-info light margin-bottom-10">
+                        <i class="rounded-x fa fa-thumbs-o-up"></i>
+                        <div class="overflow-h">
+                            <h3>We are good at ...</h3>
+                            <p>Nunc ac ligula ut diam rutrum porttitor. Integer et neque at lacus placerat pretium eu ac dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</p>
+                        </div>
+                    </div>
+                    <div class="margin-bottom-20"></div>
                 </div>
-
-                <div class="carousel-arrow">
-                    <a data-slide="prev" href="#myCarousel" class="left carousel-control">
-                        <i class="fa fa-angle-left"></i>
-                    </a>
-                    <a data-slide="next" href="#myCarousel" class="right carousel-control">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
+                <div class="col-md-6">
+                    <img class="img-responsive" src="../{{img}}" alt="">
                 </div>
             </div>
+        </div><!--/container-->
+    </div>
+    <!--=== End Parallax About Block ===-->
+
+ <!--=== Meet Our Team ===-->
+    <div class="parallax-team parallaxBg">
+        <div class="container content">
+            <div class="title-box-v2">
+                <h2>Nossa <span class="color-green">Equipe</span></h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+
+            <div class="row">
+            {% for pessoa in time_mvb %}
+                <!-- Team v2 -->
+                <div class="col-md-3 col-sm-6">
+                    <div class="team-v2">
+                        <img class="img-responsive" src="../{{pessoa.foto.url}}" alt="" />
+                        <div class="inner-team">
+                            <h3>{{pessoa.nome}}</h3>
+                            <small class="color-green">CEO, Chief Officer</small>
+                            <p>{{ pessoa.resumo }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                <!-- End Team v2 -->
+
+            </div>
         </div>
-        </div>
-        <!-- End About Sldier -->
+
+    <!--=== End Meet Our Team ===-->
 
 
-<!-- Nossa Equipe -->
- <div class="headline"><h2>Nossa Equipe</h2></div>
-        <div class="row team margin-bottom-20">
-
-           {% for pessoa in time_mvb %}
-                <div class="col-sm-4">
-                    <div class="thumbnail-style">
-                        {% if pessoa.foto %}
-                            <img alt="" src="../{{pessoa.foto.url}}" class="img-responsive"/>
-                        {% endif %}
-                        <h3><a>{{ pessoa.nome }}</a></h3>
-                        <p> {{ pessoa.resumo }}</p>
-                        <ul class="list-unstyled qms_fa">
-                            <li>
-                                <i class="fa fa-envelope"></i>
-                                {{ pessoa.e_mail }}
-                            </li>
-                            <li>
-                                <i class="fa fa-phone"></i>
-                                {{ pessoa.tel }}
-                            </li>
-                        </ul>
-                        <ul class="list-unstyled list-inline team-socail">
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                        </ul>
+<!-- Nossos Ministrantes -->
+<div class="container content">
+     <div class="title-box-v2">
+                <h2>Nossos <span class="color-green">Ministrantes</span></h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+            <div class="curso_dados curso_palestrante profile">
+            {% for palestrante in palestrantes %}
+                <div class="profile-bio" style="border: solid 1px #eee">
+                    <div class="row">
+                        <div class="col-md-3" style="width: 21%">
+                            <img class="img-responsive md-margin-bottom-10" src="../{{palestrante.foto.url}}"  alt="">
+                        </div>
+                        <div class="col-md-9">
+                            <h2>{{palestrante.nome}}</h2>
+                            <hr>
+                            <p>{{palestrante.resumo}}</p>
+                        </div>
                     </div>
                 </div>
             {% endfor %}
+            </div>
         </div>
         </div>
 {% endblock %}

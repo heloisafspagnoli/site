@@ -25,20 +25,9 @@ class parceiros_model(models.Model):
         verbose_name_plural="Parceiros"
 
 
-class img_qms_model(models.Model):
-    nome = models.CharField(max_length=200)
-    img = models.ImageField()
-    
-    def __str__(self):
-        return self.nome
-
-    class Meta:
-        verbose_name_plural="Imagens Quem somos"
-
-
 class quem_somos_model(models.Model):
     descricao = models.TextField()
-    img = models.ManyToManyField(img_qms_model)
+    img = models.ImageField()
     
     def __str__(self):
         return "Descrição"
