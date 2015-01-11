@@ -11,6 +11,8 @@ from models import chamada_model, parceiros_model, quem_somos_model,\
                    curso_model, palestrantes_model, programacao_model,\
                    material_incluso_model
 
+import unicodedata
+
 def pag_inicial_view(request):
     chamada = chamada_model.objects.first()
     cursos = curso_model.objects.filter(ativo=True)
@@ -35,8 +37,12 @@ def quem_somos_view(request):
 def cursos_view(request):
     cursos = curso_model.objects.filter(ativo=True)
     cursos = cursos.order_by('data')
+    temas = []
+    for curso in cursos:
+        temas.append(curso.tema)
+    temas = list(set(temas))
 
-    pages = Paginator(cursos, 2)
+    pages = Paginator(cursos, 9)
 
     page = request.GET.get('page')
     
@@ -53,7 +59,7 @@ def cursos_view(request):
         aux.append(pages.page(i))
         i = i + 1
 
-    return render_to_response('cursos.html', {'cursos': returned_page,
+    return render_to_response('cursos.html', {'cursos': returned_page, 'temas': temas,
                                                 'pages_number_aux': aux})
 
 def getCurso_view(request, cursoSlug):

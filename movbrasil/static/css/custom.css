@@ -37,6 +37,7 @@ h1, h2, h3, h4, h5, h6, p, small, a, span, body {
 .curso_dados h2 {
     color: #72c02c !important;
     font-size: 25px !important;
+    padding-top: 20px;
 }
 
 #curso_apresentacao h3 {
@@ -159,4 +160,42 @@ h1, h2, h3, h4, h5, h6, p, small, a, span, body {
 #msg_enviada p {
     color: #555;
     font-size: 16px;
+}
+
+.fa {
+    margin-right: 5px;
+}
+
+/* do teste do scroll
+.subMenu_curso {
+    background: white;
+    color: black;
+    text-decoration: none;
+    padding: 7px 15px;
+    cursor: pointer;
+    font: 400 13px/21px "Open Sans", sans-serif;
+    transition: all .3s ease-in-out;
+    position: relative;
+    overflow: visible;
+    margin: 10px 0 0;
+    display: inline-block;
+    border: solid 1px #eee;
+}
+
+.subMenu_curso:hover {
+    background: #72c02c;
+    color: white;
+    text-decoration: none;
+}   
+*/
+
+.subMenu a,
+.subMenu a:hover {
+    text-decoration: none;
+}
+
+.subMenu .active{
+    background: #72c02c;
+border-color: #72c02c;
+color: #fff !important;
 }
