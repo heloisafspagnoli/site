@@ -39,6 +39,8 @@
 </head>
 
 <body>
+
+
 <div class="wrapper">
     <!--=== Header ===-->
     <div class="header">
@@ -74,26 +76,71 @@
             {% block content %}
             {% endblock %}
 
-    <!--=== Footer Version 1 ===-->
     <div class="footer-v1">
-        <div class="copyright">
+        <div class="footer">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6">
+                    <!-- About -->
+                    <div class="col-md-3 md-margin-bottom-40">
+                        <a href="index.html"><img id="logo-footer" class="footer-logo" src="{% static 'img/logo_white.png' %}" alt="" style="width:255px;"></a>
+                        <p>{{ chamada.chamada }}</p>
+                    </div><!--/col-md-3-->
+                    <!-- End About -->
+
+                    <!-- Latest -->
+                    <div class="col-md-3 md-margin-bottom-40">
+                        <div class="posts">
+                            <div class="headline"><h2>Próximos cursos</h2></div>
+                            <ul class="list-unstyled latest-list">
+                                {% for curso in proximos_cursos %}
+                                <li>
+                                    <a href="{% url  'curso_item' curso.slug %}">{{ curso.titulo }}</a>
+                                    <small>{{curso.data}}</small>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div><!--/col-md-3-->
+                    <!-- End Latest -->
+
+                    <!-- Link List -->
+                    <div class="col-md-3 md-margin-bottom-40">
+                        <div class="headline"><h2>Links Úteis</h2></div>
+                        <ul class="list-unstyled link-list">
+                            <li><a href="{% url 'home' %}">Página Inicial</a><i class="fa fa-angle-right"></i></li>
+                            <li><a href="{% url 'cursos' %}">Cursos</a><i class="fa fa-angle-right"></i></li>
+                            <li><a href="{% url 'quem_somos' %}">Quem somos</a><i class="fa fa-angle-right"></i></li>
+                            <li><a href="http://movbrasil.shopping.marketup.com/">Loja Virtual</a><i class="fa fa-angle-right"></i></li>
+                            <li><a href="{% url 'contato' %}">Contato</a><i class="fa fa-angle-right"></i></li>
+                        </ul>
+                    </div><!--/col-md-3-->
+                    <!-- End Link List -->
+
+                    <!-- Address -->
+                    <div class="col-md-3 map-img md-margin-bottom-40">
+                        <div class="headline"><h2>Dados para contato</h2></div>
+                        <ul class="list-unstyled qms_fa margin-bottom-30">
+                            <li><a href="{% url 'contato' %}" style="text-decoration:none; color:white;">{{contato.e_mail}}</a></li>
+                            <li style="color: white">{{contato.telefone}}</li>
+                        </ul>
+                    </div><!--/col-md-3-->
+                    <!-- End Address -->
+                </div>
+            </div>
+        </div><!--/footer-->
+
+        <div class="copyright">
+            <div class="container">
+                <div class="row" style="position: relative;">
+                    <div class="col-md-6" style=" position: absolute; bottom: 0;">
                         <p>
-                            2014 &copy; Todos os direitos reservados.
+                            2015 &copy; Todos os direitos reservados.
                         </p>
                     </div>
 
                     <!-- Social Links -->
-                    <div class="col-md-6">
-                        <ul class="footer-socials list-inline">
-                            <li>
-                                <a href="https://www.facebook.com/movbrasil" class="tooltips" data-toggle="tooltip" data-placement="top" title="" data-original-title="Facebook">
-                                    <i class="fa fa-facebook"></i>
-                                </a>
-                            </li>
-                        </ul>
+                    <div style="float: right;">
+                        <iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fmovbrasil&amp;width&amp;layout=standard&amp;action=like&amp;colorscheme=dark&amp;show_faces=true&amp;share=false&amp;height=80&amp;appId=612929132112832" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:80px;" allowTransparency="true"></iframe>
                     </div>
                     <!-- End Social Links -->
                 </div>
@@ -103,6 +150,6 @@
     <!--=== End Footer Version 1 ===-->
 </div><!--/wrapper-->
 
-{% block js %} {% endblock %}
+{% block js %}{% endblock %}
 </body>
 </html>

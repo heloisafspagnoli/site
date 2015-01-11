@@ -3,7 +3,7 @@ from django.contrib import admin
 from models import chamada_model, parceiros_model, quem_somos_model,\
                    equipe_model, endereco_contato_model, local_model,\
                    curso_model, palestrantes_model, programacao_model,\
-                   material_incluso_model, img_qms_model
+                   material_incluso_model
 
 
 class CursoAdmin(admin.ModelAdmin):
@@ -20,4 +20,3 @@ admin.site.register(curso_model, CursoAdmin)
 admin.site.register(palestrantes_model)
 admin.site.register(programacao_model)
 admin.site.register(material_incluso_model)
-admin.site.register(img_qms_model)
