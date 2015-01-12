@@ -133,8 +133,6 @@ If you like Smint, or have suggestions on how it could be improved, send me a tw
 	       			smintA.removeClass('active')
 	       			$(".smint a:not('.extLink'):last").addClass('active')
 	       			
-   				} else {
-   					smintA.last().removeClass('active')
    				}
 			});
 
