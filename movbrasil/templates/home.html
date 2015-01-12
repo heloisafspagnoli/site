@@ -46,7 +46,6 @@
 
 
 {% block content%}
-    <!--=== Slider ===-->
     <div class="tp-banner-container">
         <div class="tp-banner">
             <ul>
@@ -64,7 +63,7 @@
                         data-easing="Back.easeInOut"
                         data-endeasing="Power1.easeIn"
                         data-endspeed="300">
-                        Bem-vindo à <span style = "text-transform:none" >MovBrasil</span>
+                        Bem vindo à <span style = "text-transform:none" >MovBrasil</span>
                     </div>
 
                     <!-- LAYER -->
@@ -79,7 +78,7 @@
                         data-endeasing="Power1.easeIn"
                         data-captionhidden="off"
                         style="z-index: 6">
-                        {{chamada.chamada|linebreaks}}
+                        {{chamada.chamada|linebreaksbr}}
                     </div>
 
                     <!-- LAYER -->
@@ -100,13 +99,12 @@
                 </li>
                 <!-- END SLIDE -->
 
-
+                <!-- END SLIDE -->
             </ul>
             <div class="tp-bannertimer tp-bottom"></div>
         </div>
     </div>
     <!--=== End Slider ===-->
-
     <!-- Recent Works -->
 
     <div class="container content" style="margin-top:30px;">

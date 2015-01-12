@@ -125,26 +125,6 @@ h1, h2, h3, h4, h5, h6, p, small, a, span, body {
     margin-left: 65px;
 }
 
-#id_nome {
-    width: 370px;
-}
-
-#id_email { 
-    width: 370px;
-}
-
-#id_endereco{
-    width: 370px;
-}
-
-#id_bairro {
-    width: 370px;
-}
-
-#id_duvidas {
-    width: 660px;
-}
-
 #msg_enviada {
     padding-bottom: 30px;
     text-align: center;
