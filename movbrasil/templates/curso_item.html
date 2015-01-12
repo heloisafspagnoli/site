@@ -231,27 +231,23 @@
 
                                                     <form action="" id="sky-form1" method="post">
                                                         {% csrf_token %}
-                                                        {% for field in form %}
-                                                            <div class="float_curso">
-                                                                <label>{{field.label}}</label>
-                                                                <div class="row margin-bottom-20">
-                                                                    <div class="col-md-7 col-md-offset-0">
-                                                                        {{ field }}
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        {%endfor%}
 
-                                                        <div class="float_curso">
+                                                        {% for field in form %}
+                                                        <div class="form-group">
+                                                                <label>{{field.label}}</label>
+                                                                {% if field.help_text %}
+                                                                    <small style="display: block; color: #737373;">{{ field.help_text }}</small>
+                                                                {% endif %}
+                                                                {{ field }}
+                                                        </div>
+                                                        {% endfor %}
+
+                                                        <div class="form-group">
                                                             <label>Dúvidas</label>
-                                                            <div class="row margin-bottom-20">
-                                                                <div class="col-md-7 col-md-offset-0">
-                                                                    <textarea id="id_duvidas" rows='6' name="duvidas" type="text"></textarea>
-                                                                </div>
-                                                            </div>
+                                                                    <textarea id="id_duvidas" name="duvidas" class="form-control"  rows='3'  type="text"></textarea>
                                                         </div>
 
-                                                        <div class="float_curso"><button type="submit" class="btn-u" id="enviar_form1" value="Submit">Enviar</button></div>
+                                                        <button type="submit" class="btn-u" id="enviar_form1" value="Submit">Enviar</button>
                                                     </form>
                                                 </div>
                                             </div>
@@ -381,6 +377,9 @@
         $("#enviar_form1").click(function(){
             $("#form1").css("display","none");
             $("#processing").css("display","block");
+            $('html,body').animate({
+                scrollTop: $(".curso_inscricao").offset().top},
+                1000);
         });
 
     });
