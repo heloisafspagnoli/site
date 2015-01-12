@@ -62,6 +62,8 @@ class local_model(models.Model):
     bairro = models.CharField(max_length=100)
     cidade = models.CharField(max_length=100)
     estado = models.CharField(max_length=100)
+    latitude = models.CharField(max_length=100, blank=True)
+    longitude = models.CharField(max_length=100, blank=True)
 
     def __unicode__(self):
         return self.nome

@@ -200,3 +200,8 @@ border-color: #72c02c;
 color: #fff !important;
 }
 
+#map-canvas {
+  width: 1168px;
+  height: 300px;
+  background-color: #CCC;
+}
