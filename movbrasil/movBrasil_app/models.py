@@ -71,6 +71,7 @@ class local_model(models.Model):
 
 
 class endereco_contato_model(models.Model):
+    texto_inicial = models.TextField()
     assuntos = models.TextField()
     e_mail = models.EmailField()
     telefone = models.CharField(max_length=30)
