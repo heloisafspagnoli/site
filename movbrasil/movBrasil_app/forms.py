@@ -29,5 +29,5 @@ class InscricaoForm(forms.Form):
     nro_comp = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control'}), label="Número/Complemento", help_text="Será utilizado para emissão de Nota Fiscal/Recibo")
     bairro = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control'}), label="Bairro", help_text="Será utilizado para emissão de Nota Fiscal/Recibo")
     cidade = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control'}), label="Cidade", help_text="Será utilizado para emissão de Nota Fiscal/Recibo")
-    estado = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control'}), label="Cidade", help_text="Será utilizado para emissão de Nota Fiscal/Recibo")
+    estado = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control'}), label="Estado", help_text="Será utilizado para emissão de Nota Fiscal/Recibo")
     formacao = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control'}), label="Formação")

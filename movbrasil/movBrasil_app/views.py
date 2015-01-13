@@ -113,8 +113,9 @@ def getCurso_view(request, cursoSlug):
             mensagem = cd['nome'] + " - " + cd['cpf'] + "\n" + \
                        cd['telefone'] + "\n" + cd['email'] + "\n\n" + \
                        cd['endereco'] + ", " + cd['nro_comp'] + "\n" + \
-                       cd['bairro'] + "  " + cd['cidade'] + "\n\n" + \
-                       cd['formacao'] + "\n\n" + duvidas
+                       cd['bairro'] + ", " + cd['cidade'] + " -  " + \
+                       cd['estado'] + "\n\n" +  cd['formacao'] + "\n\n" + \
+                       duvidas
             send_mail(assunto, mensagem, email_de,[email_para, email_de])
             return HttpResponseRedirect('/contato_efetuado/')
     else:
