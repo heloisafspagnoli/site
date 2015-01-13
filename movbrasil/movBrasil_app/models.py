@@ -132,6 +132,7 @@ class curso_model(models.Model):
     ativo = models.BooleanField(default=True)
     slug = models.SlugField(max_length=40, unique=True)
     preco = models.CharField(max_length=300)
+    botao_pagSeguro = models.TextField()
 
     local = models.ForeignKey(local_model)
     material_incluso = models.ManyToManyField(material_incluso_model)
