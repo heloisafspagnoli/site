@@ -46,6 +46,7 @@ class equipe_model(models.Model):
     tel = models.CharField(max_length=11)
     e_mail= models.EmailField()
     foto = models.ImageField()
+    contato = models.BooleanField(default=False)
 
     def __str__(self):
         return self.nome
@@ -75,7 +76,6 @@ class local_model(models.Model):
 class endereco_contato_model(models.Model):
     texto_inicial = models.TextField()
     assuntos = models.TextField()
-    e_mail = models.EmailField()
     telefone = models.CharField(max_length=30)
     local = models.ForeignKey(local_model)
     
@@ -123,7 +123,8 @@ class programacao_model(models.Model):
 
 class curso_model(models.Model):
     titulo = models.CharField(max_length=254)
-    data = models.DateField()
+    data_inicial = models.DateField()
+    data_final = models.DateField()
     img = models.ImageField()
     tema = models.CharField(max_length=254)
     descricao = models.TextField()
