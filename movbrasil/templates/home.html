@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load staticfiles %}
+{% load static from staticfiles %}
 
 {% block title %}
     <title> MovBrasil </title>
@@ -52,7 +52,7 @@
                 <!-- SLIDE -->
                 <li class="revolution-mch-1" data-transition="fade" data-slotamount="5" data-masterspeed="1000" data-title="Slide 1">
                     <!-- MAIN IMAGE -->
-                    <img src="../{{chamada.img_chamada.url}}"  alt="darkblurbg"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+                    <img src="{{chamada.img_chamada.url}}"  alt="darkblurbg"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
 
                     <div class="tp-caption re-title-v1 sft start"
                         data-x="center"
@@ -123,7 +123,7 @@
                         <div class="item">
                             <a href="{% url  'curso_item' curso.slug %}">
                                 <em class="overflow-hidden">
-                                    <img class="img-responsive" src="../{{curso.img.url}}"alt="">
+                                    <img class="img-responsive" src="{{curso.img.url}}"alt="" style="max-height:215px;">
                                 </em>
                                 <span>
                                     <strong>{{ curso.titulo }}</strong>
@@ -144,7 +144,7 @@
         <ul class="list-inline owl-carousel-v6 owl-slider-v6 margin-bottom-50">
             {% for parceiro in parceiros %}
             <li class="owl-carousel-item">
-                <img  src="../{{parceiro.foto.url}}"  alt="">
+                <img  src="{{parceiro.foto.url}}"  alt="">
             </li>
             {% endfor %}
         </ul>

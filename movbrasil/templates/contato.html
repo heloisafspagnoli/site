@@ -126,7 +126,9 @@
                 <!-- Contacts -->
                 <div class="headline"><h2>Dados para contato</h2></div>
                 <ul class="list-unstyled qms_fa margin-bottom-30">
-                    <li><i class="fa fa-envelope"></i>{{contato.e_mail}}</li>
+                    {% for email in emails %}
+                        <li><i class="fa fa-envelope"></i>{{email}}</li>
+                    {% endfor %}
                     <li><i class="fa fa-phone"></i>{{contato.telefone}}</li>
                     <li><i class="fa fa-facebook-square"></i><a href="https://www.facebook.com/movbrasil">fb.com/movbrasil</a></li>
                 </ul>

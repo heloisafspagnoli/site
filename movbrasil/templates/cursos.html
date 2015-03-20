@@ -65,11 +65,23 @@
                                     <div class="thumbnails thumbnail-style thumbnail-kenburn">
                                         <div class="thumbnail-img">
                                             <div class="overflow-hidden">
-                                                <img class="img-responsive" src="../{{curso.img.url}}"  alt="">
+                                                <img class="img-responsive" style="max-height:215px !important; width:336px;" src="../{{curso.img.url}}"  alt="">
                                             </div>
                                         </div>
                                         <div class="product-description">
                                             <h3><a class="hover-effect" href="{% url  'curso_item' curso.slug %}">{{ curso.titulo }}</a></h3>
+                                            {% if curso.data_final == curso.data_inicial %}
+                                                <h5>{{curso.data_inicial }}</h5>
+                                            {% else %}
+                                                {% if curso.data_inicial.month == curso.data_final.month %}
+                                                    <h5>{{curso.data_inicial.day }} a {{ curso.data_final }}</h5>
+                                                {% else %}
+                                                    <h5>{{curso.data_inicial | date:"d/M"}} - {{ curso.data_final|date:"d/M/Y" }}</h5>
+                                                    <h5>{{curso.data_inicial | date:"d M"}} - {{ curso.data_final|date:"d M Y" }}</h5>
+                                                    <h5>{{curso.data_inicial.day}} de {{curso.data_inicial|date:"F"}} - {{ curso.data_final}}</h5>
+                                                    <h5>{{curso.data_inicial.day}} de {{curso.data_inicial|date:"F"}} a {{ curso.data_final}}</h5>
+                                                {% endif %}
+                                            {% endif %}
                                             <span>{{ curso.local.cidade }} - {{ curso.local.estado }}</span>
                                         </div>
                                     </div>
