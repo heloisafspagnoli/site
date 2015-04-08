@@ -1,3 +1,4 @@
 *.pyc
 movbrasil/media/
 movbrasil/movBrasil_app/migrations/
+movbrasil/movbrasil/settings.py
