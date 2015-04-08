@@ -42,6 +42,14 @@
         </a>
     </li>
     <!-- End Contato -->
+
+    <!-- Blog -->
+    <li>
+        <a href="https://movbrasil.wordpress.com/">
+            Blog
+        </a>
+    </li>
+    <!-- End Blog -->
 {% endblock %}
 
 {% block content%}
@@ -109,6 +117,8 @@
                                             </div>
                                         {% endif %}
                                     {%endfor%}
+                                    <div class="g-recaptcha" data-sitekey="6LeloQQTAAAAAEDw43zeiC6aQbhsnJFBlpSYUojK"></div>
+                                    <br>
                                     <p><button type="submit" class="btn-u" id="enviar" value="Submit">Enviar</button></p>
                                 </form>
                             </div>
@@ -129,7 +139,6 @@
                     {% for email in emails %}
                         <li><i class="fa fa-envelope"></i>{{email}}</li>
                     {% endfor %}
-                    <li><i class="fa fa-phone"></i>{{contato.telefone}}</li>
                     <li><i class="fa fa-facebook-square"></i><a href="https://www.facebook.com/movbrasil">fb.com/movbrasil</a></li>
                 </ul>
             </div><!--/col-md-3-->
@@ -153,11 +162,15 @@
 
     <!-- JS Customization -->
     <script type="text/javascript" src="{% static 'js/custom.js' %}"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
     <script type="text/javascript">
         jQuery(document).ready(function() {
             App.init();
             Validation.initValidation();
+
+            $( "input" ).addClass( "form-control");
+            $( "textarea" ).addClass( "form-control");
 
             {% if form.errors %}
                 {% for field in form %}

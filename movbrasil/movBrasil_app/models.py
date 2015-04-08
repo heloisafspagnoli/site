@@ -2,23 +2,27 @@
 from django.db import models
 from django.conf import settings
 
-
 class chamada_model(models.Model):
+    titulo = models.CharField(max_length=100)
     chamada = models.TextField(max_length=200)
+    txt_botao1 = models.CharField(max_length=50)
+    url_botao1 = models.TextField()
+    txt_botao2 = models.CharField(max_length=50, blank=True, null=True)
+    url_botao2 = models.TextField(blank=True, null=True)
     img_chamada = models.ImageField()
 
-    def __str__(self):
-        return "Chamada"
+    def __unicode__(self):
+        return self.titulo
 
     class Meta:
-        verbose_name_plural="Chamada"
+        verbose_name_plural="Chamadas"
 
 
 class parceiros_model(models.Model):
     nome = models.CharField(max_length=200)
     foto = models.ImageField()
 
-    def __str__(self):
+    def __unicode__(self):
         return self.nome
 
     class Meta:
@@ -48,7 +52,7 @@ class equipe_model(models.Model):
     foto = models.ImageField()
     contato = models.BooleanField(default=False)
 
-    def __str__(self):
+    def __unicode__(self):
         return self.nome
 
     class Meta:
@@ -76,7 +80,6 @@ class local_model(models.Model):
 class endereco_contato_model(models.Model):
     texto_inicial = models.TextField()
     assuntos = models.TextField()
-    telefone = models.CharField(max_length=30)
     local = models.ForeignKey(local_model)
     
     def __str__(self):

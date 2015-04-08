@@ -1,10 +1,10 @@
+# -*- coding: utf-8 -*-
 from django.contrib import admin
 
 from models import chamada_model, parceiros_model, quem_somos_model,\
                    equipe_model, endereco_contato_model, local_model,\
                    curso_model, palestrantes_model, programacao_model,\
                    material_incluso_model
-
 
 class CursoAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("titulo",)}

@@ -41,6 +41,14 @@
         </a>
     </li>
     <!-- End Contato -->
+
+    <!-- Blog -->
+    <li>
+        <a href="https://movbrasil.wordpress.com/">
+            Blog
+        </a>
+    </li>
+    <!-- End Blog -->
 {% endblock %}
 
 {% block content %}
@@ -71,14 +79,14 @@
                     <div class="banner-info light margin-bottom-10">
                         <i class="rounded-x fa fa-thumbs-o-up"></i>
                         <div class="overflow-h">
-                            <h3>Somos bons em ...</h3>
+                            <h3>Nossos Valores</h3>
                             <p>{{ qms.somos_bons }}</p>
                         </div>
                     </div>
                     <div class="margin-bottom-20"></div>
                 </div>
                 <div class="col-md-6">
-                    <img class="img-responsive" src="../{{qms.img.url}}" alt="">
+                    <img class="img-responsive" src="{{qms.img.url}}" alt="">
                 </div>
             </div>
         </div>
@@ -96,7 +104,7 @@
                 {% for pessoa in time_mvb %}
                     <div class="col-md-3 col-sm-6">
                         <div class="team-v2">
-                            <img class="img-responsive" src="../{{ pessoa.foto.url }}" alt="" />
+                            <img class="img-responsive" src="{{ pessoa.foto.url }}" alt="" />
                             <div class="inner-team">
                                 <h3>{{ pessoa.nome }}</h3>
                                 <small class="color-green">{{ pessoa.cargo }}</small>
@@ -129,8 +137,8 @@
             {% for palestrante in palestrantes %}
                 <div class="profile-bio" style="border: solid 1px #eee">
                     <div class="row">
-                        <div class="col-md-3" style="width: 21%">
-                            <img class="img-responsive md-margin-bottom-10" src="../{{palestrante.foto.url}}"  alt="">
+                        <div class="col-md-3" >
+                            <img class="img-responsive md-margin-bottom-10" src="{{palestrante.foto.url}}"  alt="">
                         </div>
                         <div class="col-md-9">
                             <h2>{{palestrante.nome}}</h2>

@@ -42,6 +42,14 @@
         </a>
     </li>
     <!-- End Contato -->
+
+    <!-- Blog -->
+    <li>
+        <a href="https://movbrasil.wordpress.com/">
+            Blog
+        </a>
+    </li>
+    <!-- End Blog -->
 {% endblock %}
 
 {% block content%}
@@ -65,7 +73,7 @@
                                     <div class="thumbnails thumbnail-style thumbnail-kenburn">
                                         <div class="thumbnail-img">
                                             <div class="overflow-hidden">
-                                                <img class="img-responsive" style="max-height:215px !important; width:336px;" src="../{{curso.img.url}}"  alt="">
+                                                <img class="img-responsive" style="max-height:215px !important; width:336px;" src="{{curso.img.url}}"  alt="">
                                             </div>
                                         </div>
                                         <div class="product-description">
@@ -73,14 +81,7 @@
                                             {% if curso.data_final == curso.data_inicial %}
                                                 <h5>{{curso.data_inicial }}</h5>
                                             {% else %}
-                                                {% if curso.data_inicial.month == curso.data_final.month %}
-                                                    <h5>{{curso.data_inicial.day }} a {{ curso.data_final }}</h5>
-                                                {% else %}
-                                                    <h5>{{curso.data_inicial | date:"d/M"}} - {{ curso.data_final|date:"d/M/Y" }}</h5>
                                                     <h5>{{curso.data_inicial | date:"d M"}} - {{ curso.data_final|date:"d M Y" }}</h5>
-                                                    <h5>{{curso.data_inicial.day}} de {{curso.data_inicial|date:"F"}} - {{ curso.data_final}}</h5>
-                                                    <h5>{{curso.data_inicial.day}} de {{curso.data_inicial|date:"F"}} a {{ curso.data_final}}</h5>
-                                                {% endif %}
                                             {% endif %}
                                             <span>{{ curso.local.cidade }} - {{ curso.local.estado }}</span>
                                         </div>
@@ -93,7 +94,7 @@
             </div>
             <!--End Portfolio-->
 
-            <!--Pagination-->
+            <!--Pagination
             <div class="text-center">
                 <ul class="pagination">
                     {% if cursos.has_previous %}
@@ -113,7 +114,7 @@
                     {% endif %}
                 </ul>
             </div>
-            <!--End Pagination-->
+            End Pagination-->
 
         </div>
     </div>
