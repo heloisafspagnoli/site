@@ -3,9 +3,7 @@ Site MvB
 Tutorial: https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-django-with-postgres-nginx-and-gunicorn
 
 sudo apt-get install python3
-
 sudo apt-get install python-pip
-
 sudo apt-get install libpq-dev python-dev
 
 sudo apt-get install postgresql postgresql-contrib
