@@ -11,6 +11,15 @@
     <link rel="stylesheet" href="{% static 'css/pages/profile.css' %}">
     <link rel="stylesheet" href="{% static 'plugins/sky-forms/version-2.0.1/css/custom-sky-forms.css' %}">
     <link rel="stylesheet" href="{% static 'plugins/cube-portfolio/cubeportfolio/css/cubeportfolio.css' %}">
+
+    <style>
+        @media screen and (max-device-width: 720px) {
+            #menu_superior {
+                visibility: hidden;
+                display:none;
+            }
+        }
+        </style>
 {% endblock %}
 
 {% block topbar %}
@@ -45,12 +54,20 @@
         </a>
     </li>
     <!-- End Contato -->
+
+    <!-- Blog -->
+    <li>
+        <a href="https://movbrasil.wordpress.com/">
+            Blog
+        </a>
+    </li>
+    <!-- End Blog -->
 {% endblock %}
 
 
 {% block content%}
     <!-- Início menu superior -->
-    <div class="content" style="padding-bottom: 0px;">
+    <div class="content" id="menu_superior" style="padding-bottom: 0px;">
         <div class="fusion-portfolio cbp-3-col">
             <div id="filters-container" class="cbp-l-filters-alignCenter subMenu" style="height: 65px; margin-bottom: 0px; width: 100%; z-index: 10; padding-bottom: 0px; margin-bottom: 0px; background: white;">
                     <a href="#curso_apresentacao" class="cbp-filter-item cbp-filter-item page-scroll">
@@ -95,15 +112,21 @@
                             <h2>{{ curso_item.titulo }}</h2>
                             <div class="blog-post-tags">
                                 <ul class="list-unstyled list-inline blog-info">
-                                    <li><i class="fa fa-calendar"></i> {{curso_item.data_inicial }}</li>
+                                    <li><i class="fa fa-calendar"></i>
+                                    {% if curso_item.data_final == curso_item.data_inicial %}
+                                            {{curso_item.data_inicial }}
+                                        {% else %}
+                                            {{curso_item.data_inicial | date:"d M"}} - {{ curso_item.data_final|date:"d M Y" }}
+                                        {% endif %}
+                                    </li>
                                     <li><i class="fa fa-map-marker"></i> {{ curso_item.local.cidade }} - {{ curso_item.local.estado }} </li>
                                     <li><i class="fa fa-dot-circle-o"></i> {{curso_item.publico }} </li>
                                 </ul>
                             </div>
-                            <div class="blog-img">
-                                <img class="img-responsive" src="../{{curso_item.img.url}}" alt="">
+                            <div class="blog-img" style='overflow: auto; display: table; width: 100%;'>
+                                <img class="img-responsive" id="curso_img" src="{{curso_item.img.url}}" alt="">
+                                <p style="font-size: 16px;   display: table-cell; text-align: justify; vertical-align: middle; width: 60%;   padding-left: 10px">{{ curso_item.descricao|linebreaksbr}}</p>
                             </div>
-                            <p>{{ curso_item.descricao }} </p>
                             <div id="material_incluso">
                                 <h5><b> Material Incluso </b></h5>
                                 <ul class="list-unstyled">
@@ -130,7 +153,7 @@
                                 <div class="profile-bio" style="border: solid 1px #eee">
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <img class="img-responsive md-margin-bottom-10" src="../{{palestrante.foto.url}}"  alt="">
+                                            <img class="img-responsive md-margin-bottom-10" src="{{palestrante.foto.url}}"  alt="">
                                         </div>
                                         <div class="col-md-10">
                                             <h2>{{palestrante.nome}}</h2>
@@ -198,9 +221,9 @@
                             </div>
                             <br>
 
-                            <div class="row" id="inscricao_buttons" style="display: inline-flex; margin-left: 265px">
+                            <div class="col-md-7" id="inscricao_buttons" style="margin-top:25px;">
 
-                                <button type="button" id="form_button" class="btn btn-default btn-lg" style="border-radius: 6px !important; margin-right: 100px; height: 45px;" data-toggle="modal" data-target="#responsive">
+                                <button type="button" id="form_button" class="btn btn-default btn-lg" style="border-radius: 6px !important; margin-right: 100px; float:left" data-toggle="modal" data-target="#responsive">
                                     <i class="fa-pencil-square-o" style="margin-right: 10px;"></i>
                                      Via Tranferência ou Depósito
                                 </button>
@@ -258,7 +281,8 @@
                                                     <label>Dúvidas</label>
                                                     <textarea id="id_duvidas" name="duvidas" class="form-control"  rows='3'  type="text"></textarea>
                                                 </div>
-
+                                                <div class="g-recaptcha" data-sitekey="6LeloQQTAAAAAEDw43zeiC6aQbhsnJFBlpSYUojK"></div>
+                                                <br>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn-u btn-u-default" data-dismiss="modal">Cancelar</button>
                                                     <button type="submit" class="btn-u" id="enviar_form1" value="Submit">Enviar</button>
@@ -306,6 +330,7 @@
     <script src="{% static 'plugins/sky-forms/version-2.0.1/js/jquery.validate.min.js' %}"></script>
 
     <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
     <script type="text/javascript">
 

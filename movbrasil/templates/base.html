@@ -54,8 +54,13 @@
             <!-- Navbar -->
             <div class="navbar navbar-default mega-menu" role="navigation">
                 <div class="container">
+
                     <!-- Brand and toggle get grouped for better mobile display -->
                     <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                        <span class="sr-only">Menu</span>
+                        <span class="fa fa-bars"></span>
+                    </button>
                         <a class="navbar-brand" href="{% url 'home' %}"}>
                             <img id="logo-header" src="{% static 'img/logo.png' %}" alt="Logo" width="200px">
                         </a>
@@ -97,7 +102,11 @@
                                     {% for curso in proximos_cursos %}
                                     <li>
                                         <a href="{% url  'curso_item' curso.slug %}">{{ curso.titulo }}</a>
-                                        <small>{{curso.data}}</small>
+                                        {% if curso.data_final == curso.data_inicial %}
+                                            <small>{{curso.data_inicial }}</small>
+                                        {% else %}
+                                            <small>{{curso.data_inicial | date:"d M"}} - {{ curso.data_final|date:"d M Y" }}</small>
+                                        {% endif %}
                                     </li>
                                     {% endfor %}
                                 </ul>
@@ -114,6 +123,7 @@
                                 <li><a href="{% url 'quem_somos' %}">Quem somos</a><i class="fa fa-angle-right"></i></li>
                                 <li><a href="http://movbrasil.shopping.marketup.com/">Loja Virtual</a><i class="fa fa-angle-right"></i></li>
                                 <li><a href="{% url 'contato' %}">Contato</a><i class="fa fa-angle-right"></i></li>
+                                <li><a href="https://movbrasil.wordpress.com/">Blog</a><i class="fa fa-angle-right"></i></li>
                             </ul>
                         </div><!--/col-md-3-->
                         <!-- End Link List -->
@@ -125,7 +135,6 @@
                                 {% for email in emails %}
                                     <li><a href="{% url 'contato' %}" style="text-decoration:none; color:white;">{{email}}</a></li>
                                 {% endfor %}
-                                <li style="color: white">{{contato.telefone}}</li>
                             </ul>
                         </div><!--/col-md-3-->
                         <!-- End Address -->
@@ -140,7 +149,7 @@
 
                         <div class="col-md-6" style=" position: absolute; bottom: 0;">
                             <p>
-                                2015 &copy; Todos os direitos reservados.
+                                 {% now "Y" %} (c) Todos os direitos reservados.
                             </p>
                         </div>
 
