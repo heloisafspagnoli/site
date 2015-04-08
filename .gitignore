@@ -1,2 +1,3 @@
+*.pyc
 movbrasil/media/
 movbrasil/movBrasil_app/migrations/
